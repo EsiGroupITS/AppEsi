@@ -50,7 +50,7 @@
 // clase para fuente amigable con dislexia MSO
 .dyslexic-font {
     font-family: 'OpenDyslexic-Regular', sans-serif !important;
-    
+
 }
 
 // clase para aumentar tamaño de texto (Facu)
@@ -94,4 +94,9 @@
 //Clase para espaciado de letras (Moyano)
 .space-letter{
     letter-spacing: 4px !important;
+}
+
+//filtro para luminosidad
+.bright{
+  filter: brightness(150%);
 }

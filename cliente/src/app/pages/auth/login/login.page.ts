@@ -9,8 +9,8 @@ import { Router                       } from '@angular/router'
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   providers: [AccessibilityComponent]
-  
-  
+
+
 })
 export class LoginPage implements OnInit {
 
@@ -19,7 +19,8 @@ export class LoginPage implements OnInit {
   private mediumFontSubscription?   : Subscription;
   private highContrastSubscription? : Subscription;
   private dyslexicSubscription?     : Subscription;
-  private mdTextSpacingSubscription?: Subscription;            
+  private mdTextSpacingSubscription?: Subscription;
+  private changeBrightSuscription?  : Subscription;
 
   constructor(
     private accService: AccessibilityService,
@@ -70,7 +71,7 @@ export class LoginPage implements OnInit {
         } else {
           this.removeUniqueClass(['login-title', 'user', 'pass', 'sub-btn'], 'dyslexic-font')
         }
-      }) 
+      })
     })
 
     // texto espaciado
@@ -81,7 +82,18 @@ export class LoginPage implements OnInit {
         } else {
           this.removeUniqueClass(['user', 'pass', 'sub-btn'], 'space-letter')
         }
-      }) 
+      })
+    })
+
+    //luminosidad
+    this.changeBrightSuscription = this.accService.luminousHtml$.subscribe({
+      next: (active =>{
+        if(active === true){
+          this.addUniqueClass(['wrapper','form-container'], 'bright')
+        } else{
+          this.removeUniqueClass(['wrapper', 'form-container'], 'bright')
+        }
+      })
     })
   }
 
@@ -91,6 +103,7 @@ export class LoginPage implements OnInit {
     this.highContrastSubscription?.unsubscribe()
     this.dyslexicSubscription?.unsubscribe()
     this.mdTextSpacingSubscription?.unsubscribe()
+    this.changeBrightSuscription?.unsubscribe()
   }
 
   navigateLogin() {

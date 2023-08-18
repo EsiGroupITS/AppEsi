@@ -19,6 +19,7 @@ export class AccessibilityComponent  implements OnInit {
   private highContrastBln : boolean = false;
   private dyslexicFont    : boolean = false;
   private mdTextSpacing   : boolean = false;
+  private brighLightBln: boolean = false;
 
   //TODO crear booleanos para otras opciones
 
@@ -49,10 +50,16 @@ export class AccessibilityComponent  implements OnInit {
     this.accService.mdTextSpacing$.subscribe( value => {
       this.mdTextSpacing    = value
     })
+
+    this.accService.luminousHtml$.subscribe( value => {
+      this.brighLightBln = value
+    })
+
+
    }
 
   ngOnInit() {
-    
+
   }
 
   // switch case para pasar diferentes metodos segun el indice
@@ -61,10 +68,10 @@ export class AccessibilityComponent  implements OnInit {
   }
 
   activeOption(index: number) {
-    
+
     // con el color del texto identificamos el elemnto HTML que representa al boton
-    const btn : HTMLElement | null = document.getElementById(`btn-text${index}`   ) 
-  
+    const btn : HTMLElement | null = document.getElementById(`btn-text${index}`   )
+
     switch (index) {
       case 0:
         // cuando lo presionamos se cambia el valor del booleano (true = activo, false = inactivo)
@@ -74,10 +81,10 @@ export class AccessibilityComponent  implements OnInit {
           btn?.classList.add('active')
           this.saveChangesBln = true
         }
-        // si es falso, que lo deje con el color por defecto 
+        // si es falso, que lo deje con el color por defecto
         else {
           btn?.classList.remove('active')
-        }  
+        }
         break;
       case 1:
         // cuando lo presionamos se cambia el valor del booleano (true = activo, false = inactivo)
@@ -87,10 +94,10 @@ export class AccessibilityComponent  implements OnInit {
           btn?.classList.add('active')
           this.saveChangesBln = true
         }
-        // si es falso, que lo deje con el color por defecto 
+        // si es falso, que lo deje con el color por defecto
         else {
           btn?.classList.remove('active')
-        }  
+        }
         break;
       case 2:
         // cuando lo presionamos se cambia el valor del booleano (true = activo, false = inactivo)
@@ -100,10 +107,10 @@ export class AccessibilityComponent  implements OnInit {
           btn?.classList.add('active')
           this.saveChangesBln = true
         }
-        // si es falso, que lo deje con el color por defecto 
+        // si es falso, que lo deje con el color por defecto
         else {
           btn?.classList.remove('active')
-        }  
+        }
         break;
       case 3:
         // cuando lo presionamos se cambia el valor del booleano (true = activo, false = inactivo)
@@ -113,10 +120,10 @@ export class AccessibilityComponent  implements OnInit {
           btn?.classList.add('active')
           this.saveChangesBln = true
         }
-        // si es falso, que lo deje con el color por defecto 
+        // si es falso, que lo deje con el color por defecto
         else {
           btn?.classList.remove('active')
-        }  
+        }
         break;
       case 4:
         // cuando lo presionamos se cambia el valor del booleano (true = activo, false = inactivo)
@@ -126,16 +133,26 @@ export class AccessibilityComponent  implements OnInit {
           btn?.classList.add('active')
           this.saveChangesBln = true
         }
-        // si es falso, que lo deje con el color por defecto 
+        // si es falso, que lo deje con el color por defecto
         else {
           btn?.classList.remove('active')
-        }  
+        }
         break;
-    
+      case 5:
+        this.brighLightBln = !this.brighLightBln
+
+        if (this.brighLightBln === true){
+          btn?.classList.add('active')
+        }
+        else{
+          btn?.classList.remove('active')
+        }
+        break;
+
       default:
         break;
     }
-    this.switchMethods(index)    
+    this.switchMethods(index)
   }
 
 }

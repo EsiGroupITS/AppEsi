@@ -47,6 +47,12 @@ export class AccessibilityService {
       icon  : 'code-outline',
       class : 'space-letter',
       active: false
+    },
+    {
+      title : 'Luminosidad',
+      icon  : 'sunny-outline',
+      class : 'bright',
+      active: false
     }
   ]
 
@@ -74,7 +80,12 @@ export class AccessibilityService {
   public  mdTextSpacingActivateBln : boolean             = false
   private mdTextSpacingActive      : Subject<boolean>    = new Subject<boolean>()
   public  mdTextSpacing$           : Observable<boolean> = this.mdTextSpacingActive.asObservable()
-  
+
+  //variables para luminosidad
+  public luminousActiveBln: boolean = false
+  private luminousActive = new Subject<boolean>()
+  public luminousHtml$ = this.luminousActive.asObservable()
+
   // TODO agregar variables para cada una de las opciones
 
   constructor() { }
@@ -87,28 +98,28 @@ export class AccessibilityService {
   changeContrastBlack() : void {
     this.contrastBlackActiveBln = !this.contrastBlackActiveBln
     this.contrastBlackActive.next(this.contrastBlackActiveBln)
-    this.options[0].active      = !this.options[0].active 
+    this.options[0].active      = !this.options[0].active
   }
 
   // metodo para aumentar el tamaño de las letras (Facu)
   changeMediumFont() : void {
     this.mediumFontActivateBln = !this.mediumFontActivateBln
     this.mediumFontActive.next(this.mediumFontActivateBln)
-    this.options[1].active     = !this.options[1].active 
+    this.options[1].active     = !this.options[1].active
   }
 
   // Método para cambiar variables de alto contraste (Javi)
   changeHighContrast() : void {
     this.highContrastActiveClr = !this.highContrastActiveClr
     this.highContrastActive.next(this.highContrastActiveClr)
-    this.options[2].active     = !this.options[2].active 
+    this.options[2].active     = !this.options[2].active
   }
 
   // metodo para cambiar variables de dislexia (MSO)
   changeToDyslexicFont() : void {
     this.dyslexicFriendlyBln = !this.dyslexicFriendlyBln
     this.dyslexicFriendlyActive.next(this.dyslexicFriendlyBln)
-    this.options[3].active   = !this.options[3].active 
+    this.options[3].active   = !this.options[3].active
   }
 
 
@@ -116,7 +127,14 @@ export class AccessibilityService {
    changeLetterSpacing() : void{
     this.mdTextSpacingActivateBln = !this.mdTextSpacingActivateBln
     this.mdTextSpacingActive.next(this.mdTextSpacingActivateBln)
-    this.options[4].active      = !this.options[4].active 
+    this.options[4].active      = !this.options[4].active
+  }
+
+  //metodo para cambiar luminosidad (yanina)
+  changeBright() : void{
+    this.luminousActiveBln  = !this.luminousActiveBln
+    this.luminousActive.next(this.luminousActiveBln)
+    this.options[5].active  = !this.options[5].active
   }
 
   //TODO agregar metodos para cada una de las opciones
@@ -128,16 +146,19 @@ export class AccessibilityService {
         this.changeContrastBlack()
         break;
       case 1:
-        this.changeMediumFont() 
+        this.changeMediumFont()
         break
       case 2:
-        this.changeHighContrast() 
+        this.changeHighContrast()
         break
       case 3:
         this.changeToDyslexicFont()
         break
       case 4:
         this.changeLetterSpacing()
+        break
+      case 5:
+        this.changeBright()
         break
       // TODO ACA AGREGAR NUEVOS METODOS
       default:
@@ -146,5 +167,5 @@ export class AccessibilityService {
   }
 
 
-  
+
 }
