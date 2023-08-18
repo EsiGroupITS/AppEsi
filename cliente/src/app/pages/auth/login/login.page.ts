@@ -20,7 +20,7 @@ export class LoginPage implements OnInit {
   private highContrastSubscription? : Subscription;
   private dyslexicSubscription?     : Subscription;
   private mdTextSpacingSubscription?: Subscription;
-  private changeBrightSuscription?: Subscription;
+  private changeBrightSuscription?  : Subscription;
 
   constructor(
     private accService: AccessibilityService,

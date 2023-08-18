@@ -49,9 +49,9 @@ export class AccessibilityService {
       active: false
     },
     {
-      title: 'Luminosidad',
-      icon: 'sunny-outline',
-      class: 'bright',
+      title : 'Luminosidad',
+      icon  : 'sunny-outline',
+      class : 'bright',
       active: false
     }
   ]
@@ -134,7 +134,7 @@ export class AccessibilityService {
   changeBright() : void{
     this.luminousActiveBln  = !this.luminousActiveBln
     this.luminousActive.next(this.luminousActiveBln)
-    this.options[5].active      = !this.options[4].active
+    this.options[5].active  = !this.options[5].active
   }
 
   //TODO agregar metodos para cada una de las opciones
