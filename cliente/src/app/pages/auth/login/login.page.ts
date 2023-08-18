@@ -12,6 +12,8 @@ export class LoginPage implements OnInit {
   //? Variable que instanciara la suscripcion a cambios en contraste
   private contrastBlackSuscription?: Subscription;
 
+  private letterSpacingSuscription?: Subscription;
+
   constructor(
     private accService: AccessibilityService
   ) { 
@@ -24,6 +26,16 @@ export class LoginPage implements OnInit {
         }
       })
     })
+
+    this.letterSpacingSuscription = this.accService.mdTextSpacing$.subscribe({
+      next: (active) =>{
+        if (active === true) {
+          this.addUniqueClass(['spacing', 'form-container'], 'space-letter')
+        } else  {
+          this.removeUniqueClass(['spacing', 'form-container'], 'space-letter')
+        }
+      }
+    })
    }
 
   ngOnInit() {
@@ -32,6 +44,7 @@ export class LoginPage implements OnInit {
 
   ngOnDestroy(): void {
     this.contrastBlackSuscription?.unsubscribe()
+    this.letterSpacingSuscription?.unsubscribe()
   }
 
 

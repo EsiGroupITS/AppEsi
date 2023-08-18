@@ -39,10 +39,16 @@ export class AccessibilityComponent  implements OnInit {
       icon: 'search-outline',
       class: 'zoom'
     },
+    {
+      title: 'Espaciado',
+      icon: 'options-outline',
+      class: 'letter-spacing'
+    }
   ]
 
   //? boolean para registrar si la opcion de accesibilidad esta activada
   private blackContrastBln: boolean = false
+  private letterSpacingBln: boolean = false
 
   //TODO crear booleanos para otras opciones
 
@@ -55,7 +61,9 @@ export class AccessibilityComponent  implements OnInit {
   ngOnInit() {
     this.blackContrastBln = this.accService.contrastBlackActiveBln
 
+
     //TODO hacer lo mismo aca con otras opciones
+    this.letterSpacingBln = this.accService.mdTextSpacingActivateBln
   }
 
   // switch case para pasar diferentes metodos segun el indice
@@ -68,6 +76,10 @@ export class AccessibilityComponent  implements OnInit {
       // case 1:
         // this.metodoQueCorresponda(index) 
       //break
+      case 4:
+        this.onChangeLetterSpacing(index)
+        break;
+        
       default:
         break;
     }
@@ -101,6 +113,17 @@ export class AccessibilityComponent  implements OnInit {
   }
 
   //TODO crear otros metodos para aplicar otras clases
-  
+  onChangeLetterSpacing(index: number){
+
+    const btn: HTMLElement | null = document.getElementById(`btn-text${index}`)
+
+    this.letterSpacingBln = !this.letterSpacingBln
+
+    if (this.letterSpacingBln === true){
+      btn?.classList.add('active')
+    } else  {
+      btn?.classList.remove('active')
+    }this.accService.changeLetterSpacing()
+  }
 
 }
