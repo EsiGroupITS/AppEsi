@@ -25,6 +25,7 @@
     "@capacitor/keyboard": "5.0.0",
     "@capacitor/status-bar": "5.0.0",
     "@ionic/angular": "^7.0.0",
+    "bootstrap": "^5.3.1",
     "ionicons": "^7.0.0",
     "rxjs": "~7.5.0",
     "swiper": "^9.3.2",

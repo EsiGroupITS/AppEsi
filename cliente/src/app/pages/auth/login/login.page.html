@@ -1,15 +1,15 @@
 <ion-content [fullscreen]="true">
     <div id="wrapper" class="wrapper">
       <img src="../../../../assets/img/welcome/005.png" alt="">
-      <h2>Ingresa con tus datos</h2>
+      <h2 id="login-title">Ingresa con tus datos</h2>
       <div id="form-container" class="form-container">
         <br><br>
-        <ion-input fill="outline" label="Usuario" type="text" placeholder="Ingresa Usuario" labelPlacement="floating"></ion-input>
-        <ion-input fill="outline" label="Contraseña" type="password" placeholder="Ingresa Contraseña" labelPlacement="floating" autocomplete="false"></ion-input>
-        <ion-button click="onClick()" expand="block" color="dark" fill="solid">
+        <ion-input id="user" fill="outline" label="Usuario" type="text" placeholder="Ingresa Usuario" labelPlacement="floating"></ion-input>
+        <ion-input id="pass" fill="outline" label="Contraseña" type="password" placeholder="Ingresa Contraseña" labelPlacement="floating" autocomplete="false"></ion-input>
+        <ion-button id="sub-btn" (click)="navigateLogin()"  expand="block" color="dark" fill="solid">
           Ingresa
         </ion-button>
-        <div class="access-logo-container">
+        <div class="access-logo-container" id="access-logo-ctn">
           <ion-icon id="open-access-menu" color="primary" name="accessibility"></ion-icon>
         </div>
       </div>

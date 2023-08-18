@@ -25,15 +25,73 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
+
+
+// agregado fuente Dyslexic Friendly
+@font-face {
+    font-family: 'OpenDyslexic-Regular';
+    src: url(./assets/fonts/OpenDyslexic-Regular.otf) format('opentype');
+}
+
+
 // ACA SE CREAN LAS CLASES QUE VAN A MODIFICAR EL DOM CON LA OPCION DESEADA
 // EL NOMBRE DE LA CLASE SE PASARA CUANDO SE LLAME EL METODO
 // Y EL ACCESIBILITY SERVICE DEBERIA NOTIFICAR A TODOS LOS COMPONENTES
 
 
-// clase para contraste negro
+// clase para contraste negro MSO
 .constrast-black {
     img {
         opacity: 0.0 !important;
     }
     background: black !important;
+}
+
+// clase para fuente amigable con dislexia MSO
+.dyslexic-font {
+    font-family: 'OpenDyslexic-Regular', sans-serif !important;
+    
+}
+
+// clase para aumentar tamaño de texto (Facu)
+.medium-font {
+    font-size: 24px !important;
+}
+
+// Clase para alto contraste para personas con visibilidad reducida/daltónicos (Javi)
+.high-visibility {
+    img {
+        opacity: 0.0 !important;
+    }
+
+    h2{
+        color:#4d333b;
+    }
+
+    ion-input{
+        background: #4d333b;
+        color: #e5ca99;
+        --highlight-color-focused: #e5ca99;
+        }
+
+    .ion-color-dark {
+            --ion-color-base: #4d333b !important;
+            --ion-color-contrast: #e5ca99 !important;
+    }
+
+    #access-logo-ctn {
+        color: #4d333b;
+        border: 5px solid #4d333b !important;
+        --ion-color-primary: #e5ca99 !important;
+        background: #4d333b !important;
+    }
+
+    background: #e5ca99 !important;
+
+}
+
+
+//Clase para espaciado de letras (Moyano)
+.space-letter{
+    letter-spacing: 4px !important;
 }

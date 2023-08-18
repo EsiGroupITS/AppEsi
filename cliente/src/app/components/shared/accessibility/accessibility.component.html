@@ -6,13 +6,13 @@
   <div class="row">
     <!-- el boton activa o desactiva la opcion deseada -->
     <!-- pasamos el metodo para elegir la opcion deseada (switchMethods(indice)) -->
-    <div class="btn" *ngFor="let option of options; let i = index" (click)="switchMethods(i)">
-      <ion-icon slot="start" color="light" [name]="option.icon"></ion-icon>
+    <div class="btn" *ngFor="let option of options; let i = index" (click)="activeOption(i)">
+      <ion-icon slot="start" [color]="option.active ? 'primary' : 'light'" [name]="option.icon"></ion-icon>
       <p id="btn-text{{i}}">{{option.title}}</p>
     </div>
   </div>
   <div class="row">
     <!-- TODO el boton de guardar cambios deberia guardar los mismos en la BD haciendo una llamada HTTP al backend -->
-    <ion-button expand="block" color="primary" fill="solid" disabled="true">Guardar Cambios</ion-button>
+    <ion-button expand="block" color="primary" fill="solid" [disabled]="!saveChangesBln">Guardar Cambios</ion-button>
   </div>
 </div>

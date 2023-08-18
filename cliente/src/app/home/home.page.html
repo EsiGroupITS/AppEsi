@@ -1,20 +1,32 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="home-wrapper" id="home-wrapper">
+    <div id="open-access" class="accessibility-btn">
+      <div class="inner-circle">
+        <ion-icon name="accessibility"></ion-icon>
+      </div>
+    </div>
+    <ion-modal trigger="open-access" [initialBreakpoint]="0.75" [breakpoints]="[0,0.75]">
+      <ng-template>
+        <div class="title" >
+          <h3>Menú de Accesibilidad</h3>
+        </div>
+        <div class="wrapper">
+          <div class="row">
+            <!-- el boton activa o desactiva la opcion deseada -->
+            <!-- pasamos el metodo para elegir la opcion deseada (switchMethods(indice)) -->
+            <div class="btn" *ngFor="let option of options; let i = index" (click)="activeBtn(i)">
+              <ion-icon slot="start" color="light" [name]="option.icon"></ion-icon>
+              <p id="btn-text{{i}}">{{option.title}}</p>
+            </div>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+          </div>
+          <div class="row">
+            <!-- TODO el boton de guardar cambios deberia guardar los mismos en la BD haciendo una llamada HTTP al backend -->
+            <ion-button expand="block" color="primary" fill="solid" disabled="true">Guardar Cambios</ion-button>
+          </div>
+        </div>
+      </ng-template>
+    </ion-modal>
   </div>
+  
 </ion-content>

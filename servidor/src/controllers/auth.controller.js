@@ -149,6 +149,8 @@ const getAll = async(req, res) => {
         })
     }
 }
+
+
 export const methods = {
     register,
     login,
