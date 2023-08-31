@@ -35,15 +35,6 @@ const register = async (req, res) => {
                 ok: false,
                 msg: 'El usuario ya existe'
             })
-            await transaction.rollback() // Hacer un rollback
-            return
-        }
-
-        res.status(201).json({
-            ok: true,
-            user,
-            msg: 'Creado con éxito'
-        })
 
         await transaction.commit() // Si todo OK, commitea los cambios
 
