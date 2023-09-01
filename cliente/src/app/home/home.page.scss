@@ -36,6 +36,31 @@
       font-size: 1.8em;
     }
   }
+  ion-header {
+    padding: 0px;
+    .custom-toolbar {
+      padding: 40px 16px;
+      height: 100px;
+      background: var(--ion-color-light);
+      h2 {
+        margin: 0px;
+        font-weight: 900;
+      }
+      h4 {
+        margin: 1px 0px;
+        font-weight: 300;
+      }
+    }
+  }
+
+  .slideshow-container {
+    height: 200px;
+    min-width: 100%;
+    background: var(--ion-color-light);
+    overflow: auto;
+    display: flex;
+    flex-direction: row;
+  }
 
   
 }

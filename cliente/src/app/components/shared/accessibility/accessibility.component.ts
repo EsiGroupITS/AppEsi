@@ -19,7 +19,7 @@ export class AccessibilityComponent  implements OnInit {
   private highContrastBln : boolean = false;
   private dyslexicFont    : boolean = false;
   private mdTextSpacing   : boolean = false;
-  private brighLightBln: boolean = false;
+  private brighLightBln   : boolean = false;
 
   //TODO crear booleanos para otras opciones
 
