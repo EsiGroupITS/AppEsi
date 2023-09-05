@@ -1,3 +1,14 @@
 <ion-app>
   <ion-router-outlet></ion-router-outlet>
+
 </ion-app>
+<div class="accesibilty-btn">
+  <div class="inner-circle">
+    <ion-icon id="open-access-menu2" name="accessibility" color="primary"></ion-icon>
+  </div>
+</div>
+<ion-modal trigger="open-access-menu2" [initialBreakpoint]="0.75" [breakpoints]="[0,0.75]">
+  <ng-template>
+    <app-accessibility></app-accessibility>
+  </ng-template>
+</ion-modal>

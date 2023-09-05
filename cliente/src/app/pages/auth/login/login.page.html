@@ -9,15 +9,7 @@
         <ion-button id="sub-btn" (click)="loginUser()"  expand="block" color="dark" fill="solid">
           Ingresa
         </ion-button>
-        <div class="access-logo-container" id="access-logo-ctn">
-          <ion-icon id="open-access-menu" color="primary" name="accessibility"></ion-icon>
-        </div>
       </div>
-      <ion-modal trigger="open-access-menu" [initialBreakpoint]="0.75" [breakpoints]="[0,0.75]">
-        <ng-template>
-          <app-accessibility></app-accessibility>
-        </ng-template>
-      </ion-modal>
     </div>
 </ion-content>
 

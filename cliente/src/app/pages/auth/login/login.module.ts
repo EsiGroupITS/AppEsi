@@ -18,11 +18,11 @@ import { AccessibilityComponent } from 'src/app/components/shared/accessibility/
     LoginPageRoutingModule,
   ],
   schemas: [NO_ERRORS_SCHEMA],
-  declarations: [LoginPage, AccessibilityComponent]
+  declarations: [LoginPage]
 })
 export class LoginPageModule {
 
-  
+
 
 
   onClick(){}

@@ -45,17 +45,35 @@
         opacity: 0.0 !important;
     }
     background: black !important;
+    color: #fff !important;
+
+    .bullet.active {
+      background: #fff !important;
+    }
+
 }
 
 // clase para fuente amigable con dislexia MSO
 .dyslexic-font {
     font-family: 'OpenDyslexic-Regular', sans-serif !important;
+    p {
+      font-size: 16px !important;
+    }
 
 }
 
 // clase para aumentar tamaño de texto (Facu)
 .medium-font {
-    font-size: 24px !important;
+    p {
+      font-size: 19px !important;
+    }
+    h1 {
+      font-size: 40px !important;
+    }
+    .arrow {
+      font-size: 2em;
+      transform: translateX(0.5rem);
+    }
 }
 
 // Clase para alto contraste para personas con visibilidad reducida/daltónicos (Javi)
@@ -64,9 +82,10 @@
         opacity: 0.0 !important;
     }
 
-    h2{
-        color:#4d333b;
+    h1, h2, h3, h4, p {
+      color:#4d333b !important;
     }
+
 
     ion-input{
         background: #4d333b;
@@ -78,6 +97,7 @@
             --ion-color-base: #4d333b !important;
             --ion-color-contrast: #e5ca99 !important;
     }
+
 
     #access-logo-ctn {
         color: #4d333b;

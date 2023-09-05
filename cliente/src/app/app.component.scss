@@ -1,0 +1,24 @@
+.accesibilty-btn {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: var(--ion-color-primary);
+  right: 10px;
+  top: 2rem;
+  display: flex;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  .inner-circle {
+    border-radius: 50%;
+    display: inherit;
+    justify-content: center;
+    align-items: center;
+    background: lightgray;
+    height: calc(60px - 8px);
+    width: calc(60px - 8px);
+    ion-icon {
+      font-size: 2em;
+    }
+  }
+}
