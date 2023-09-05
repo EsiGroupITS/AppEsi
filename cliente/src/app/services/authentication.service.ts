@@ -11,7 +11,11 @@ export class AuthenticationService {
 
   // Propiedad para almacenar el token
   token: string | undefined;
+
+  // TODO: ALMACENAR baseUrl EN VARIABLES DE ENTORNO
   private baseUrl = "http://localhost:3000/"
+
+  //# EXCELENTE
   private urlCreateUser = this.baseUrl+"auth/register"
   private urlLoginUser = this.baseUrl+"auth/login"
 

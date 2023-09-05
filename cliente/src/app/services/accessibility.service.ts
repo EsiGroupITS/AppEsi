@@ -1,5 +1,9 @@
 import { Injectable           } from '@angular/core';
 import { Observable, Subject  } from 'rxjs'
+import { Store                } from '@ngrx/store';
+import * as uiActions           from '../ui-state/actions/ui.actions'
+import { UiState } from '../ui-state/ui.state';
+import { AppState } from '../app.state';
 
 //? Interface para definir opciones de accesibilidad
 export interface Option {
@@ -88,7 +92,9 @@ export class AccessibilityService {
 
   // TODO agregar variables para cada una de las opciones
 
-  constructor() { }
+  constructor(
+    private store: Store<AppState>
+  ) { }
 
   emitChangesOnUI() {
     this.eventSubject.next()
@@ -99,6 +105,7 @@ export class AccessibilityService {
     this.contrastBlackActiveBln = !this.contrastBlackActiveBln
     this.contrastBlackActive.next(this.contrastBlackActiveBln)
     this.options[0].active      = !this.options[0].active
+    this.store.dispatch(uiActions.changeContrast())
   }
 
   // metodo para aumentar el tamaño de las letras (Facu)
@@ -106,6 +113,7 @@ export class AccessibilityService {
     this.mediumFontActivateBln = !this.mediumFontActivateBln
     this.mediumFontActive.next(this.mediumFontActivateBln)
     this.options[1].active     = !this.options[1].active
+    this.store.dispatch(uiActions.changeTextSize())
   }
 
   // Método para cambiar variables de alto contraste (Javi)
@@ -113,6 +121,7 @@ export class AccessibilityService {
     this.highContrastActiveClr = !this.highContrastActiveClr
     this.highContrastActive.next(this.highContrastActiveClr)
     this.options[2].active     = !this.options[2].active
+    this.store.dispatch(uiActions.changeVisibility())
   }
 
   // metodo para cambiar variables de dislexia (MSO)
@@ -120,6 +129,7 @@ export class AccessibilityService {
     this.dyslexicFriendlyBln = !this.dyslexicFriendlyBln
     this.dyslexicFriendlyActive.next(this.dyslexicFriendlyBln)
     this.options[3].active   = !this.options[3].active
+    this.store.dispatch(uiActions.changeFontType())
   }
 
 
@@ -128,6 +138,7 @@ export class AccessibilityService {
     this.mdTextSpacingActivateBln = !this.mdTextSpacingActivateBln
     this.mdTextSpacingActive.next(this.mdTextSpacingActivateBln)
     this.options[4].active      = !this.options[4].active
+    this.store.dispatch(uiActions.changeTextSpacing())
   }
 
   //metodo para cambiar luminosidad (yanina)

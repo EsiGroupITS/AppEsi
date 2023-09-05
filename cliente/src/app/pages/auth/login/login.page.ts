@@ -1,40 +1,54 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { AccessibilityService } from 'src/app/services/accessibility.service';
-import { AccessibilityComponent } from 'src/app/components/shared/accessibility/accessibility.component';
+import { Component, OnInit  } from '@angular/core';
+
+// componentes de navegacion
 import { Router } from '@angular/router'
-import { AuthenticationService } from 'src/app/services/authentication.service';
-import { CookieService } from 'ngx-cookie-service';
+
+// gestion de estado
+import * as uiSelectors from '../../../ui-state/selectors/ui.selectors'
+import { Store        } from '@ngrx/store';
+import { Observable   } from 'rxjs';
+
+// servicios propios
+import { AuthenticationService  } from 'src/app/services/authentication.service';
+import { CookieService          } from 'ngx-cookie-service';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
-  providers: [AccessibilityComponent]
-
-
+  providers: []
 })
+
+
 export class LoginPage implements OnInit {
 
-  //? Variable que instanciara la suscripcion a cambios en contraste
-  private contrastBlackSuscription?: Subscription;
-  private mediumFontSubscription?: Subscription;
-  private highContrastSubscription?: Subscription;
-  private dyslexicSubscription?: Subscription;
-  private mdTextSpacingSubscription?: Subscription;
-  private changeBrightSuscription?: Subscription;
+
+  //? selector para el estado de la aplicacion
+  contrastBlack$  : Observable<boolean | null>
+  textSize$       : Observable<boolean | null>
+  textSpacing$    : Observable<boolean | null>
+  highVisibility$ : Observable<boolean | null>
+  dyslexicFont$   : Observable<boolean | null>
 
   constructor(
-    private accService: AccessibilityService,
     private router: Router,
-    private acc: AccessibilityComponent,
+    private store: Store,
     //Borrar si es necesario
     private authService: AuthenticationService,
     private cookies: CookieService
-  ) { }
+  ) {
+      this.contrastBlack$   = this.store.select(uiSelectors.selectContrast)
+      this.textSize$        = this.store.select(uiSelectors.selectTextSize)
+      this.textSpacing$     = this.store.select(uiSelectors.selectTextSpacing)
+      this.highVisibility$  = this.store.select(uiSelectors.selectVisibility)
+      this.dyslexicFont$    = this.store.select(uiSelectors.selectFontType)
+  }
 
   ngOnInit() {
+
     // constraste negro
-    this.contrastBlackSuscription = this.accService.contrastBlack$.subscribe({
+    this.contrastBlack$.subscribe({
       next: (active => { // el valor del callback va a ser booleano
         if (active === true) {
           this.addUniqueClass(['wrapper', 'form-container'], 'constrast-black')
@@ -45,7 +59,7 @@ export class LoginPage implements OnInit {
     })
 
     // aumento de texto
-    this.mediumFontSubscription = this.accService.mediumFont$.subscribe({
+    this.textSize$.subscribe({
       next: (active => {
         if (active === true) {
           this.addUniqueClass(['user', 'pass', 'sub-btn'], 'medium-font')
@@ -56,7 +70,7 @@ export class LoginPage implements OnInit {
     })
 
     // alto contraste
-    this.highContrastSubscription = this.accService.highContrast$.subscribe({
+    this.highVisibility$.subscribe({
       next: (active => {
         if (active === true) {
           this.addUniqueClass(['wrapper', 'form-container', 'access-logo-ctn'], 'high-visibility')
@@ -67,7 +81,7 @@ export class LoginPage implements OnInit {
     })
 
     // dislexia
-    this.dyslexicSubscription = this.accService.dyslexicFriendly$.subscribe({
+    this.dyslexicFont$.subscribe({
       next: (active => {
         if (active === true) {
           this.addUniqueClass(['login-title', 'user', 'pass', 'sub-btn'], 'dyslexic-font')
@@ -78,7 +92,7 @@ export class LoginPage implements OnInit {
     })
 
     // texto espaciado
-    this.mdTextSpacingSubscription = this.accService.mdTextSpacing$.subscribe({
+    this.textSpacing$.subscribe({
       next: (active => {
         if (active === true) {
           this.addUniqueClass(['user', 'pass', 'sub-btn'], 'space-letter')
@@ -89,45 +103,38 @@ export class LoginPage implements OnInit {
     })
 
     //luminosidad
-    this.changeBrightSuscription = this.accService.luminousHtml$.subscribe({
-      next: (active => {
-        if (active === true) {
-          this.addUniqueClass(['wrapper', 'form-container'], 'bright')
-        } else {
-          this.removeUniqueClass(['wrapper', 'form-container'], 'bright')
-        }
-      })
-    })
+    // this.changeBrightSuscription = this.accService.luminousHtml$.subscribe({
+    //   next: (active => {
+    //     if (active === true) {
+    //       this.addUniqueClass(['wrapper', 'form-container'], 'bright')
+    //     } else {
+    //       this.removeUniqueClass(['wrapper', 'form-container'], 'bright')
+    //     }
+    //   })
+    // })
   }
 
   ngOnDestroy(): void {
-    this.contrastBlackSuscription?.unsubscribe()
-    this.mediumFontSubscription?.unsubscribe()
-    this.highContrastSubscription?.unsubscribe()
-    this.dyslexicSubscription?.unsubscribe()
-    this.mdTextSpacingSubscription?.unsubscribe()
-    this.changeBrightSuscription?.unsubscribe()
+
   }
-  //Borrar si es necesario.
-  // navigateLogin() {
-  //   this.router.navigate(['/home'])
-  // }
+
   loginUser() {
     //Tomamos los valores de los inputs sin ningun tipo de validacion. solo a modo de prueba
-    const password = (document.getElementById('pass') as HTMLInputElement).value;
+    const password = (document.getElementById('pass'    ) as HTMLInputElement).value;
     const username = (document.getElementById('username') as HTMLInputElement).value;
 
     const postData = {
       pass: password,
       username: username
     };
+
     //Utilizamos el service para logear el usuario
     this.authService.loginUser(postData).subscribe({
       //todo ok
       next: (data: any) => {
         //Si todo salio bien seteamos el token en las cookies
         this.cookies.set("token", data.token.access_token)
-        //redirigimos al home 
+        //redirigimos al home
         this.router.navigate(['/home'])
       },
       //Mostramos el error por consola si es que algo fallo.

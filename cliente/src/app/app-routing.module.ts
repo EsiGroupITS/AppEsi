@@ -5,13 +5,14 @@ import { LoginPage } from './pages/auth/login/login.page';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-    
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
+
+
   },
   {
     path: '',
     redirectTo: 'welcome',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'welcome',
@@ -20,13 +21,14 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginPage,
+    //loadChildren: () => import('./shared/modules/accesibility/accesibility.module').then( m => m.AccesibilityModule)
   },
   {
     path: 'admin/home',
     loadChildren: () => import('./admin/home/home.module').then( m => m.HomePageModule)
   },
 
-  
+
 ];
 
 @NgModule({

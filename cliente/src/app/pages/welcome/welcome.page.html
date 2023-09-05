@@ -1,47 +1,53 @@
 
 <ion-content [fullscreen]="true">
+  <div class="circle pulse" [ngClass]="{'pulse': pulse === true}"></div>
   <!-- Slides de bienvenida -->
-  <swiper-container #swiper [slidesPerView]="1" [modules]="swiperModules">
-    <swiper-slide>
+  <swiper-container #swiper id="swiper"
+
+  [slidesPerView]="1" [modules]="swiperModules">
+    <swiper-slide id="swiper-sl">
+
+      <div class="arrow">
+        <ion-icon slot="end" [color]="(contrastBlack$ | async)? 'dark' : 'light'" name="arrow-up"></ion-icon>
+      </div>
+      <h1 id="text1">Accesibilidad</h1>
+      <p id="text2">A fin de brindar una experiencia inclusiva, nuestra aplicacion cuenta con opciones de accesibilidad variada para distinto tipo de publico. Puedes realizar los ajustes a tu medida. Accede a estas opciones en cualquier momento haciendo click en el logo en la esquina superior derecha</p>
+
+
+    </swiper-slide>
+
+    <swiper-slide id="swiper-sl2">
       <img class="logo-its" src="../../../assets/img/welcome/its-logo-512.jpg" alt="">
       <h1>Bienvenidos</h1>
       <p>Los invitamos a ser parte de nuestra comunidad</p>
     </swiper-slide>
 
-    <swiper-slide>
+    <swiper-slide id="swiper-sl3">
       <h1>Acerca de ESIAPP</h1>
       <p>Te traemos información de calidad para acompañarte en cada etapa de tu vida.</p>
       <img class="children" src="../../../assets/img/welcome/002.png" alt="">
     </swiper-slide>
 
-    <swiper-slide>
-      <h1>Accesibilidad</h1>
-      <p>A fin de brindar una experiencia inclusiva, nuestra aplicacion cuenta con opciones de accesibilidad variada para distinto tipo de publico. Puedes realizar los ajustes a tu medida. Accede a estas opciones en cualquier momento haciendo click en el logo</p>
-      <div class="access-logo-container">
-        <ion-icon color="primary" name="accessibility"></ion-icon>
-      </div>
-
-    </swiper-slide>
   </swiper-container>
 
-  <div class="bullets">
+  <div id="bullets" class="bullets">
     <div [ngClass]="bullet1 ? 'active' : '' " class="bullet"></div>
     <div [ngClass]="bullet2 ? 'active' : '' " class="bullet"></div>
     <div [ngClass]="bullet3 ? 'active' : '' " class="bullet"></div>
   </div>
   <ion-buttons>
 
-    <ion-button slot="end" (click)="next()">
+    <ion-button slot="end" [color]="(contrastBlack$ | async)? 'dark' : 'primary'" (click)="next()">
       <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
       {{nextButtonText}}
     </ion-button>
 
-    <ion-button *ngIf="!backDisabled" slot="start" (click)="previous()" >
+    <ion-button *ngIf="!backDisabled" [color]="(contrastBlack$ | async)? 'dark' : 'primary'" slot="start" (click)="previous()" >
       <ion-icon name="chevron-back-outline"></ion-icon>
       Anterior
     </ion-button>
 
   </ion-buttons>
 
-
 </ion-content>
+

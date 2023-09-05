@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginPage,
-    loadChildren: () => import('../../../shared/modules/accesibility/accesibility.module').then( m => m.AccesibilityModule)
+    //loadChildren: () => import('../../../shared/modules/accesibility/accesibility.module').then( m => m.AccesibilityModule)
   }
 ];
 
