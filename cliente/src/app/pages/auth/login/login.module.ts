@@ -1,6 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -16,6 +16,7 @@ import { AccessibilityComponent } from 'src/app/components/shared/accessibility/
     FormsModule,
     IonicModule,
     LoginPageRoutingModule,
+    ReactiveFormsModule
   ],
   schemas: [NO_ERRORS_SCHEMA],
   declarations: [LoginPage]
