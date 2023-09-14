@@ -110,16 +110,6 @@ export class LoginPage implements OnInit {
       })
     })
 
-    //luminosidad
-    // this.changeBrightSuscription = this.accService.luminousHtml$.subscribe({
-    //   next: (active => {
-    //     if (active === true) {
-    //       this.addUniqueClass(['wrapper', 'form-container'], 'bright')
-    //     } else {
-    //       this.removeUniqueClass(['wrapper', 'form-container'], 'bright')
-    //     }
-    //   })
-    // })
   }
   //Verificamos si el email es invalido y ademas de si el campo fue tocado y quedo vacio, mostraremos un error.
   get emailInvalid() {
@@ -142,7 +132,15 @@ export class LoginPage implements OnInit {
     } else {
       //Si el formulario es valido:
       //Utilizamos el service para logear el usuario
-      this.authService.loginUser(this.loginForm.value).subscribe({
+
+
+      let credentials = {
+        username: this.loginForm.value.email,
+        pass: this.loginForm.value.pass
+      }
+
+
+      this.authService.loginUser(credentials).subscribe({
         //todo ok
         next: (data: any) => {
 
