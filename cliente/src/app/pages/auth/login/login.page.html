@@ -4,11 +4,36 @@
       <h2 id="login-title">Ingresa con tus datos</h2>
       <div id="form-container" class="form-container">
         <br><br>
-        <ion-input id="username" label="Usuario" type="text" placeholder="Ingrese su correo" labelPlacement="floating"></ion-input>
-        <ion-input id="pass" label="Contraseña" type="password" placeholder="Ingresa Contraseña" labelPlacement="floating" autocomplete="false"></ion-input> <!--Se quita temporalmente (fill="outline") de las etiquetas de formulario para arreglar su funcionamiento mas adelante-->
-        <ion-button id="sub-btn" (click)="loginUser()"  expand="block" color="dark" fill="solid">
-          Ingresa
-        </ion-button>
+
+
+        <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+          <ion-input [class.is-invalid]="emailInvalid"
+            id="email"
+            fill="outline"
+            label="Email"
+            type="text"
+            placeholder="Ingrese su correo"
+            formControlName="email"
+            labelPlacement="floating"
+          ></ion-input>
+          <small *ngIf="emailInvalid" style="color:red;">Campo obligatorio</small>
+          <ion-input
+          [class.is-invalid]="passwordInvalid"
+            id="pass"
+            fill="outline"
+            label="Contraseña"
+            type="password"
+            placeholder="Ingresa Contraseña"
+            formControlName="pass"
+            labelPlacement="floating"
+            autocomplete="false"
+          ></ion-input>
+          <small *ngIf="passwordInvalid" style="color:red;">La contraseña debe tener entre 8 a 20 caracteres</small>
+          <ion-button id="sub-btn" expand="block" color="dark" fill="solid" type="submit">
+            Ingresa
+          </ion-button>
+        </form>
+
       </div>
     </div>
 </ion-content>

@@ -1,17 +1,18 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators, NgControl, FormBuilder, MaxLengthValidator, MinLengthValidator } from '@angular/forms';
 
 // componentes de navegacion
 import { Router } from '@angular/router'
 
 // gestion de estado
 import * as uiSelectors from '../../../ui-state/selectors/ui.selectors'
-import { Store        } from '@ngrx/store';
-import { Observable   } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 // servicios propios
-import { AuthenticationService  } from 'src/app/services/authentication.service';
-import { CookieService          } from 'ngx-cookie-service';
-
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { CookieService } from 'ngx-cookie-service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -20,33 +21,40 @@ import { CookieService          } from 'ngx-cookie-service';
   providers: []
 })
 
-
 export class LoginPage implements OnInit {
 
+  //Inicializamos el formulario
+  loginForm!: FormGroup;
 
   //? selector para el estado de la aplicacion
-  contrastBlack$  : Observable<boolean | null>
-  textSize$       : Observable<boolean | null>
-  textSpacing$    : Observable<boolean | null>
-  highVisibility$ : Observable<boolean | null>
-  dyslexicFont$   : Observable<boolean | null>
+  contrastBlack$: Observable<boolean | null>
+  textSize$: Observable<boolean | null>
+  textSpacing$: Observable<boolean | null>
+  highVisibility$: Observable<boolean | null>
+  dyslexicFont$: Observable<boolean | null>
 
   constructor(
     private router: Router,
     private store: Store,
     //Borrar si es necesario
     private authService: AuthenticationService,
-    private cookies: CookieService
+    private cookies: CookieService,
+    private formBuilder: FormBuilder,
+    private alertController: AlertController,
+
   ) {
-      this.contrastBlack$   = this.store.select(uiSelectors.selectContrast)
-      this.textSize$        = this.store.select(uiSelectors.selectTextSize)
-      this.textSpacing$     = this.store.select(uiSelectors.selectTextSpacing)
-      this.highVisibility$  = this.store.select(uiSelectors.selectVisibility)
-      this.dyslexicFont$    = this.store.select(uiSelectors.selectFontType)
+    this.contrastBlack$ = this.store.select(uiSelectors.selectContrast)
+    this.textSize$ = this.store.select(uiSelectors.selectTextSize)
+    this.textSpacing$ = this.store.select(uiSelectors.selectTextSpacing)
+    this.highVisibility$ = this.store.select(uiSelectors.selectVisibility)
+    this.dyslexicFont$ = this.store.select(uiSelectors.selectFontType)
   }
 
   ngOnInit() {
-
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      pass: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(8)]],
+    });
     // constraste negro
     this.contrastBlack$.subscribe({
       next: (active => { // el valor del callback va a ser booleano
@@ -102,46 +110,62 @@ export class LoginPage implements OnInit {
       })
     })
 
-    //luminosidad
-    // this.changeBrightSuscription = this.accService.luminousHtml$.subscribe({
-    //   next: (active => {
-    //     if (active === true) {
-    //       this.addUniqueClass(['wrapper', 'form-container'], 'bright')
-    //     } else {
-    //       this.removeUniqueClass(['wrapper', 'form-container'], 'bright')
-    //     }
-    //   })
-    // })
   }
-
+  //Verificamos si el email es invalido y ademas de si el campo fue tocado y quedo vacio, mostraremos un error.
+  get emailInvalid() {
+    return this.loginForm.get('email')?.invalid && this.loginForm.get('email')?.touched;
+  }
+  //Verificamos si la password es invalida, y ademas de si el campo fue tocado y quedo vacio, mostramos un error.
+  get passwordInvalid() {
+    return this.loginForm.get('pass')?.invalid && this.loginForm.get('pass')?.touched;
+  }
   ngOnDestroy(): void {
 
   }
 
   loginUser() {
-    //Tomamos los valores de los inputs sin ningun tipo de validacion. solo a modo de prueba
-    const password = (document.getElementById('pass'    ) as HTMLInputElement).value;
-    const username = (document.getElementById('username') as HTMLInputElement).value;
+    //Si al hacer el envio del formulario existe algun formulario invalido, lo marcamos.
+    if (this.loginForm.invalid) {
+      return Object.values(this.loginForm.controls).forEach(control => {
+        control.markAllAsTouched();
+      })
+    } else {
+      //Si el formulario es valido:
+      //Utilizamos el service para logear el usuario
 
-    const postData = {
-      pass: password,
-      username: username
-    };
 
-    //Utilizamos el service para logear el usuario
-    this.authService.loginUser(postData).subscribe({
-      //todo ok
-      next: (data: any) => {
-        //Si todo salio bien seteamos el token en las cookies
-        this.cookies.set("token", data.token.access_token)
-        //redirigimos al home
-        this.router.navigate(['/home'])
-      },
-      //Mostramos el error por consola si es que algo fallo.
-      error: (err) => {
-        console.log(err)
+      let credentials = {
+        username: this.loginForm.value.email,
+        pass: this.loginForm.value.pass
       }
-    })
+
+
+      this.authService.loginUser(credentials).subscribe({
+        //todo ok
+        next: (data: any) => {
+
+          //Si todo salio bien seteamos el token en las cookies
+          this.cookies.set("token", data.token.access_token)
+          //redirigimos al home
+          this.router.navigate(['/home'])
+        },
+        //Manejo de error.
+        error: (err) => {
+          // Alertamos por el error.
+          this.presentErrorAlert();
+        }
+      })
+    }
+  }
+  //Creamos un alerta para mostrar al usuario si algo falla.
+  async presentErrorAlert() {
+    const alert = await this.alertController.create({
+      header: 'Error de inicio de sesión',
+      message: 'No fue posible iniciar sesión. Por favor, verifica tus credenciales e inténtalo nuevamente.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   addUniqueClass(ids: string[], _class: string) {
