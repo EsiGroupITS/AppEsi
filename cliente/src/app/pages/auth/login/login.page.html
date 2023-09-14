@@ -4,12 +4,12 @@
       <h2 id="login-title">Ingresa con tus datos</h2>
       <div id="form-container" class="form-container">
         <br><br>
-        <ion-input id="username" fill="outline" label="Usuario" type="text" placeholder="Ingrese su correo" labelPlacement="floating"></ion-input>
-        <ion-input id="pass" fill="outline" label="Contraseña" type="password" placeholder="Ingresa Contraseña" labelPlacement="floating" autocomplete="false"></ion-input>
+        <ion-input id="username" label="Usuario" type="text" placeholder="Ingrese su correo" labelPlacement="floating"></ion-input>
+        <ion-input id="pass" label="Contraseña" type="password" placeholder="Ingresa Contraseña" labelPlacement="floating" autocomplete="false"></ion-input> <!--Se quita temporalmente (fill="outline") de las etiquetas de formulario para arreglar su funcionamiento mas adelante-->
         <ion-button id="sub-btn" (click)="loginUser()"  expand="block" color="dark" fill="solid">
           Ingresa
         </ion-button>
       </div>
     </div>
 </ion-content>
-
+<!---->

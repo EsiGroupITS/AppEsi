@@ -19,7 +19,7 @@ export class AccessibilityComponent  implements OnInit {
   private highContrastBln : boolean = false;
   private dyslexicFont    : boolean = false;
   private mdTextSpacing   : boolean = false;
-  private brighLightBln   : boolean = false;
+  //private brighLightBln   : boolean = false;
 
   //TODO crear booleanos para otras opciones
 
@@ -51,9 +51,9 @@ export class AccessibilityComponent  implements OnInit {
       this.mdTextSpacing    = value
     })
 
-    this.accService.luminousHtml$.subscribe( value => {
+    /*this.accService.luminousHtml$.subscribe( value => {
       this.brighLightBln = value
-    })
+    })*/
 
 
    }
@@ -138,7 +138,7 @@ export class AccessibilityComponent  implements OnInit {
           btn?.classList.remove('active')
         }
         break;
-      case 5:
+      /*case 5:
         this.brighLightBln = !this.brighLightBln
 
         if (this.brighLightBln === true){
@@ -147,7 +147,7 @@ export class AccessibilityComponent  implements OnInit {
         else{
           btn?.classList.remove('active')
         }
-        break;
+        break;*/
 
       default:
         break;

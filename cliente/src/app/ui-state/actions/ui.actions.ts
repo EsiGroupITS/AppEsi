@@ -20,4 +20,7 @@ export const changeFontType = createAction(
   '[UISTATE] Change Font Type',
 );
 
+export const changeLuminosity = createAction(
+  '[UISTATE] Change Luminosity'
+);
 
