@@ -70,9 +70,9 @@ export class LoginPage implements OnInit {
     this.textSize$.subscribe({
       next: (active => {
         if (active === true) {
-          this.addUniqueClass(['user', 'pass', 'sub-btn'], 'medium-font')
+          this.addUniqueClass(['username', 'pass', 'sub-btn'], 'medium-font')
         } else {
-          this.removeUniqueClass(['user', 'pass', 'sub-btn'], 'medium-font')
+          this.removeUniqueClass(['username', 'pass', 'sub-btn'], 'medium-font')
         }
       })
     })
@@ -92,9 +92,9 @@ export class LoginPage implements OnInit {
     this.dyslexicFont$.subscribe({
       next: (active => {
         if (active === true) {
-          this.addUniqueClass(['login-title', 'user', 'pass', 'sub-btn'], 'dyslexic-font')
+          this.addUniqueClass(['login-title', 'username', 'pass', 'sub-btn'], 'dyslexic-font')
         } else {
-          this.removeUniqueClass(['login-title', 'user', 'pass', 'sub-btn'], 'dyslexic-font')
+          this.removeUniqueClass(['login-title', 'username', 'pass', 'sub-btn'], 'dyslexic-font')
         }
       })
     })
@@ -103,9 +103,9 @@ export class LoginPage implements OnInit {
     this.textSpacing$.subscribe({
       next: (active => {
         if (active === true) {
-          this.addUniqueClass(['user', 'pass', 'sub-btn'], 'space-letter')
+          this.addUniqueClass(['username', 'pass', 'sub-btn'], 'space-letter')
         } else {
-          this.removeUniqueClass(['user', 'pass', 'sub-btn'], 'space-letter')
+          this.removeUniqueClass(['username', 'pass', 'sub-btn'], 'space-letter')
         }
       })
     })

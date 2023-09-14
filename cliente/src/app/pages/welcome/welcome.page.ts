@@ -77,9 +77,9 @@ export class WelcomePage implements OnInit {
     this.textSize$.subscribe({
       next: (active => {
         if (active === true) {
-          this.addUniqueClass(['swiper-sl'], 'medium-font')
+          this.addUniqueClass(['swiper-sl', 'swiper-sl2', 'swiper-sl3', 'swiper', 'bullets'], 'medium-font')
         } else {
-          this.removeUniqueClass(['swiper-sl'], 'medium-font')
+          this.removeUniqueClass(['swiper-sl', 'swiper-sl2', 'swiper-sl3', 'swiper', 'bullets'], 'medium-font')
         }
       })
     })
@@ -106,9 +106,9 @@ export class WelcomePage implements OnInit {
     this.dyslexicFont$.subscribe({
       next: (active => {
         if (active === true) {
-          this.addUniqueClass(['swiper-sl'], 'dyslexic-font')
+          this.addUniqueClass(['swiper-sl', 'swiper-sl2', 'swiper-sl3', 'swiper'], 'dyslexic-font')
         } else {
-          this.removeUniqueClass(['login-title', 'user', 'pass', 'sub-btn'], 'dyslexic-font')
+          this.removeUniqueClass(['swiper-sl', 'swiper-sl2', 'swiper-sl3', 'swiper'], 'dyslexic-font')
         }
       })
     })
@@ -117,9 +117,9 @@ export class WelcomePage implements OnInit {
     this.textSpacing$.subscribe({
       next: (active => {
         if (active === true) {
-          this.addUniqueClass(['user', 'pass', 'sub-btn'], 'space-letter')
+          this.addUniqueClass(['swiper-sl', 'swiper-sl2', 'swiper-sl3', 'swiper', 'bullets'], 'space-letter')
         } else {
-          this.removeUniqueClass(['user', 'pass', 'sub-btn'], 'space-letter')
+          this.removeUniqueClass(['swiper-sl', 'swiper-sl2', 'swiper-sl3', 'swiper', 'bullets'], 'space-letter')
         }
       })
     })

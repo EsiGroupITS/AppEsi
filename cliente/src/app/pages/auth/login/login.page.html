@@ -4,6 +4,8 @@
       <h2 id="login-title">Ingresa con tus datos</h2>
       <div id="form-container" class="form-container">
         <br><br>
+
+
         <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
           <ion-input [class.is-invalid]="emailInvalid"
             id="email"
@@ -31,7 +33,8 @@
             Ingresa
           </ion-button>
         </form>
+
       </div>
     </div>
 </ion-content>
-
+<!---->

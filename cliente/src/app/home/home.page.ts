@@ -21,7 +21,7 @@ export class HomePage implements OnInit {
   private highContrastBln : boolean = false;
   private dyslexicFont    : boolean = false;
   private mdTextSpacing   : boolean = false;
-  private brighLightBln   : boolean = false;
+  //private brighLightBln   : boolean = false;
 
   //? Variable que instanciara la suscripcion a cambios en contraste
   private contrastBlackSuscription? : Subscription;
@@ -29,7 +29,7 @@ export class HomePage implements OnInit {
   private highContrastSubscription? : Subscription;
   private dyslexicSubscription?     : Subscription;
   private mdTextSpacingSubscription?: Subscription;
-  private changeBrightSuscription?  : Subscription;
+  //private changeBrightSuscription?  : Subscription;
 
   constructor(
     private accService: AccessibilityService,
@@ -94,7 +94,7 @@ export class HomePage implements OnInit {
     })
 
     //luminosidad
-    this.changeBrightSuscription = this.accService.luminousHtml$.subscribe({
+    /*this.changeBrightSuscription = this.accService.luminousHtml$.subscribe({
       next: (active =>{
         if(active === true){
           this.addUniqueClass(['home-wrapper'], 'bright')
@@ -102,7 +102,7 @@ export class HomePage implements OnInit {
           this.removeUniqueClass(['home-wrapper'], 'bright')
         }
       })
-    })
+    })*/
 
    
   }
@@ -165,7 +165,7 @@ export class HomePage implements OnInit {
     })
 
     //luminosidad
-    this.changeBrightSuscription = this.accService.luminousHtml$.subscribe({
+    /*this.changeBrightSuscription = this.accService.luminousHtml$.subscribe({
       next: (active =>{
         if(active === true){
           this.addUniqueClass(['home-wrapper'], 'bright')
@@ -173,7 +173,7 @@ export class HomePage implements OnInit {
           this.removeUniqueClass(['home-wrapper'], 'bright')
         }
       })
-    })
+    })*/
       
   }
 
@@ -253,7 +253,7 @@ export class HomePage implements OnInit {
           btn?.classList.remove('active')
         }
         break;
-      case 5:
+      /*case 5:
         this.brighLightBln = !this.brighLightBln
 
         if (this.brighLightBln === true){
@@ -262,7 +262,7 @@ export class HomePage implements OnInit {
         else{
           btn?.classList.remove('active')
         }
-        break;
+        break;*/
 
       default:
         break;
