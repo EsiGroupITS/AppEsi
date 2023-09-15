@@ -1,0 +1,27 @@
+<form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+  <ion-input [class.is-invalid]="emailInvalid"
+    id="email"
+    fill="outline"
+    label="Email"
+    type="text"
+    placeholder="Ingrese su correo"
+    formControlName="email"
+    labelPlacement="floating"
+  ></ion-input>
+  <small *ngIf="emailInvalid" style="color:red;">Campo obligatorio</small>
+  <ion-input
+  [class.is-invalid]="passwordInvalid"
+    id="pass"
+    fill="outline"
+    label="Contraseña"
+    type="password"
+    placeholder="Ingresa Contraseña"
+    formControlName="pass"
+    labelPlacement="floating"
+    autocomplete="false"
+  ></ion-input>
+  <small *ngIf="passwordInvalid" style="color:red;">La contraseña debe tener entre 8 a 20 caracteres</small>
+  <ion-button id="sub-btn" expand="block" color="dark" fill="solid" type="submit">
+    Ingresa
+  </ion-button>
+</form>
