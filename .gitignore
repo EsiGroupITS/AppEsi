@@ -1,4 +1,6 @@
 node_modules
 .env
 
-./esi-api/.env
+./esi-api
+/esi-api
+esi-api

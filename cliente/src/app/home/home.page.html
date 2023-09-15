@@ -1,51 +1,56 @@
 <ion-content [fullscreen]="true">
   <div class="home-wrapper" id="home-wrapper">
-    <div id="open-access" class="accessibility-btn">
-      <div class="inner-circle">
-        <ion-icon name="accessibility"></ion-icon>
+    <div class="overlay" *ngIf="loading">
+      <ion-spinner name="circular" color="light"></ion-spinner>
+    </div>
+    <div class="header">
+      <h3>Hola {{name$ | async}}</h3>
+    </div>
+
+    <div class="body">
+      <div class="scrollable-div">
+        <div class="item-container">
+          <img src="../../assets/img/home_list/9868185_4280167.svg" alt="">
+          <div class="inner-container">
+            <h4>Sist. Reproductor</h4>
+
+          </div>
+        </div>
+
+        <div class="item-container">
+          <img src="../../assets/img/home_list/9868185_4280167.svg" alt="">
+          <div class="inner-container">
+            <h4>Sist. Reproductor</h4>
+
+          </div>
+        </div>
+
+        <div class="item-container">
+          <img src="../../assets/img/home_list/9868185_4280167.svg" alt="">
+          <div class="inner-container">
+            <h4>Sist. Reproductor</h4>
+
+          </div>
+        </div>
+
+        <div class="item-container">
+          <img src="../../assets/img/home_list/9868185_4280167.svg" alt="">
+          <div class="inner-container">
+            <h4>Sist. Reproductor</h4>
+
+          </div>
+        </div>
+
+        <div class="item-container">
+          <img src="../../assets/img/home_list/9868185_4280167.svg" alt="">
+          <div class="inner-container">
+            <h4>Sist. Reproductor</h4>
+
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- <ion-header>
-      <div class="custom-toolbar">
-        <h2>Bienvenid@</h2>
-        <h4>Nombre Apellido</h4>
-      </div>
-    </ion-header>
-
-    <div class="slideshow-container">
-      <ion-card color="primary">
-        <ion-card-header>
-          <ion-card-subtitle>Categoria</ion-card-subtitle>
-          <ion-card-title>Awesome Title</ion-card-title>
-        </ion-card-header>
-      </ion-card>
-    </div> -->
-
-    
-
-    <ion-modal trigger="open-access" [initialBreakpoint]="0.75" [breakpoints]="[0,0.75]">
-      <ng-template>
-        <div class="title" >
-          <h3>Menú de Accesibilidad</h3>
-        </div>
-        <div class="wrapper">
-          <div class="row">
-            <!-- el boton activa o desactiva la opcion deseada -->
-            <!-- pasamos el metodo para elegir la opcion deseada (switchMethods(indice)) -->
-            <div class="btn" *ngFor="let option of options; let i = index" (click)="activeOption(i)">
-              <ion-icon slot="start" [color]="option.active ? 'primary' : 'light'" [name]="option.icon"></ion-icon>
-              <p id="btn-text{{i}}">{{option.title}}</p>
-            </div>
-
-          </div>
-          <div class="row">
-            <!-- TODO el boton de guardar cambios deberia guardar los mismos en la BD haciendo una llamada HTTP al backend -->
-            <ion-button expand="block" color="primary" fill="solid" disabled="true">Guardar Cambios</ion-button>
-          </div>
-        </div>
-      </ng-template>
-    </ion-modal>
   </div>
-  
+
 </ion-content>
