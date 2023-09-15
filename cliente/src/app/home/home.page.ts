@@ -16,11 +16,13 @@ export class HomePage implements OnInit {
   loading: boolean = false
 
 
+
   constructor(
     private store: Store
   ) {}
 
   ngOnInit(): void {
+
 
   }
 

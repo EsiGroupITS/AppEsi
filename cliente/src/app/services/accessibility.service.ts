@@ -52,12 +52,12 @@ export class AccessibilityService {
       class : 'space-letter',
       active: false
     },
-    {
+    /*{
       title : 'Luminosidad',
       icon  : 'sunny-outline',
       class : 'bright',
       active: false
-    }
+    }*/
   ]
 
   // variables para el contraste negro (MSO)
@@ -86,9 +86,9 @@ export class AccessibilityService {
   public  mdTextSpacing$           : Observable<boolean> = this.mdTextSpacingActive.asObservable()
 
   //variables para luminosidad
-  public luminousActiveBln: boolean = false
-  private luminousActive = new Subject<boolean>()
-  public luminousHtml$ = this.luminousActive.asObservable()
+  /*public luminousActiveBln         : boolean             = false
+  private luminousActive           : Subject<boolean>    = new Subject<boolean>()
+  public luminousHtml$             : Observable<boolean> = this.luminousActive.asObservable()*/
 
   // TODO agregar variables para cada una de las opciones
 
@@ -134,19 +134,20 @@ export class AccessibilityService {
 
 
    //metodo para aumentar el espaciado de letras (Moyano)
-   changeLetterSpacing() : void{
+  changeLetterSpacing() : void{
     this.mdTextSpacingActivateBln = !this.mdTextSpacingActivateBln
     this.mdTextSpacingActive.next(this.mdTextSpacingActivateBln)
     this.options[4].active      = !this.options[4].active
     this.store.dispatch(uiActions.changeTextSpacing())
   }
 
-  //metodo para cambiar luminosidad (yanina)
-  changeBright() : void{
+  //metodo para cambiar luminosidad
+  /*changeBright() : void{
     this.luminousActiveBln  = !this.luminousActiveBln
     this.luminousActive.next(this.luminousActiveBln)
     this.options[5].active  = !this.options[5].active
-  }
+    this.store.dispatch(uiActions.changeLuminosity())
+  }*/
 
   //TODO agregar metodos para cada una de las opciones
 
@@ -168,9 +169,9 @@ export class AccessibilityService {
       case 4:
         this.changeLetterSpacing()
         break
-      case 5:
+      /*case 5:
         this.changeBright()
-        break
+        break*/
       // TODO ACA AGREGAR NUEVOS METODOS
       default:
         break;

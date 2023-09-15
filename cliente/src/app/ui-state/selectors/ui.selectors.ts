@@ -32,3 +32,8 @@ export const selectFontType = createSelector(
   selectUiFeature,
   (state: uiState.UiState) => state.fontDyslexic
 )
+
+export const selectLuminosity = createSelector(
+  selectUiFeature,
+  (state: uiState.UiState) => state.luminouse
+);

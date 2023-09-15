@@ -2,8 +2,9 @@
     overflow: hidden;
 }
 
+
 ion-content {
-    
+
     .wrapper {
         overflow: hidden;
         max-height: 100%;
@@ -11,7 +12,7 @@ ion-content {
         display: flex;
         flex-direction: column;
         text-align: center;
-        
+
         img {
             opacity: 0.5;
             position: relative;
@@ -33,7 +34,7 @@ ion-content {
             transform: translateY(-2px);
             height: 80vh;
             flex-grow: 1;
-            border-radius: 20px 20px 0px 0px;
+            //border-radius: 20px 20px 0px 0px;
             background: var(--ion-color-light);
             padding: 16px 32px;
             text-align: start;
@@ -41,13 +42,16 @@ ion-content {
             flex-direction: column;
             box-shadow: 0px -11px 12px -3px rgba(0,0,0,0.1);
             ion-input {
+                padding: 4px 0px !important;
                 margin: 8px 0px;
-                border-bottom: 1px solid var(--ion-color-dark) !important;
+                border-bottom: none;
+                padding-left: 0px !important;
+
             }
             ion-button {
-                margin: 20px 0px;
+                margin: 25px 0px;
             }
-            
+
             .access-logo-container {
                 cursor: pointer;
                 display: flex;
@@ -63,10 +67,10 @@ ion-content {
                 height: 1.5em;
                 border-radius: 50%;
                 margin: 32px auto;
-                
+
             }
         }
 
-        
+
     }
 }
