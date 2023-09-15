@@ -16,6 +16,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AccessibilityComponent } from './components/shared/accessibility/accessibility.component';
 import { uiReducer } from './ui-state/reducers/ui.reducers';
+import { userReducer } from './ui-state/reducers/user.reducer';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import { uiReducer } from './ui-state/reducers/ui.reducers';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    StoreModule.forRoot({ui: uiReducer}),
+    StoreModule.forRoot({ui: uiReducer, user: userReducer}),
     WelcomePageModule,
     LoginPageModule,
     HttpClientModule,

@@ -1,14 +1,54 @@
 <ion-content [fullscreen]="true">
   <div class="home-wrapper" id="home-wrapper">
-    <div class="overlay">
+    <div class="overlay" *ngIf="loading">
       <ion-spinner name="circular" color="light"></ion-spinner>
     </div>
     <div class="header">
-      <h3>Hola Mundo</h3>
+      <h3>Hola {{name$ | async}}</h3>
     </div>
 
     <div class="body">
+      <div class="scrollable-div">
+        <div class="item-container">
+          <img src="../../assets/img/home_list/9868185_4280167.svg" alt="">
+          <div class="inner-container">
+            <h4>Sist. Reproductor</h4>
 
+          </div>
+        </div>
+
+        <div class="item-container">
+          <img src="../../assets/img/home_list/9868185_4280167.svg" alt="">
+          <div class="inner-container">
+            <h4>Sist. Reproductor</h4>
+
+          </div>
+        </div>
+
+        <div class="item-container">
+          <img src="../../assets/img/home_list/9868185_4280167.svg" alt="">
+          <div class="inner-container">
+            <h4>Sist. Reproductor</h4>
+
+          </div>
+        </div>
+
+        <div class="item-container">
+          <img src="../../assets/img/home_list/9868185_4280167.svg" alt="">
+          <div class="inner-container">
+            <h4>Sist. Reproductor</h4>
+
+          </div>
+        </div>
+
+        <div class="item-container">
+          <img src="../../assets/img/home_list/9868185_4280167.svg" alt="">
+          <div class="inner-container">
+            <h4>Sist. Reproductor</h4>
+
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>

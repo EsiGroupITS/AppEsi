@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators, NgControl, FormBuilder, MaxLengthValidator, MinLengthValidator } from '@angular/forms';
+import { Component, OnInit                    } from '@angular/core';
+
+// componentes de formularios reactivos
+import { FormGroup, Validators, FormBuilder   } from '@angular/forms';
 
 // componentes de navegacion
 import { Router } from '@angular/router'
 
 // gestion de estado
 import * as uiSelectors from '../../../ui-state/selectors/ui.selectors'
-import { Store } from '@ngrx/store';
+import * as userActions from '../../../ui-state/actions/user.actions'
+import { Store      } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 // servicios propios
@@ -27,11 +30,11 @@ export class LoginPage implements OnInit {
   loginForm!: FormGroup;
 
   //? selector para el estado de la aplicacion
-  contrastBlack$: Observable<boolean | null>
-  textSize$: Observable<boolean | null>
-  textSpacing$: Observable<boolean | null>
-  highVisibility$: Observable<boolean | null>
-  dyslexicFont$: Observable<boolean | null>
+  contrastBlack$  : Observable<boolean | null>
+  textSize$       : Observable<boolean | null>
+  textSpacing$    : Observable<boolean | null>
+  highVisibility$ : Observable<boolean | null>
+  dyslexicFont$   : Observable<boolean | null>
 
   constructor(
     private router: Router,
@@ -41,6 +44,7 @@ export class LoginPage implements OnInit {
     private cookies: CookieService,
     private formBuilder: FormBuilder,
     private alertController: AlertController,
+
 
   ) {
     this.contrastBlack$ = this.store.select(uiSelectors.selectContrast)
@@ -143,9 +147,26 @@ export class LoginPage implements OnInit {
       this.authService.loginUser(credentials).subscribe({
         //todo ok
         next: (data: any) => {
+          console.log(data);
+
+          //? DESPACHAMOS LAS ACCIONES PARA AGREGAR EL USUARIO AL STORE
+          // guardamos el token
+          this.store.dispatch(userActions.setToken({token: data.user.access_token}))
+
+          // guardamos el nombre y apellido
+          this.store.dispatch(userActions.setName({name: data.user.user.name, last_name: data.user.user.last_name}))
+
+          // guardamos el id de configuracion de accesibilidad
+          this.store.dispatch(userActions.setConfigId({id: data.user.user.config.id}))
 
           //Si todo salio bien seteamos el token en las cookies
-          this.cookies.set("token", data.token.access_token)
+          this.cookies.set("token", data.user.access_token)
+
+          //TODO Guardar configuracion de accesibilidad en BD
+          // crear alert para preguntar si desea guardar su configuracion y asociarla a su usuario.
+          // si la respuesta es positiva, crear metodo en servicio, y ejecutar, despues navegar a home
+          // si es negativa, navegar a home
+
           //redirigimos al home
           this.router.navigate(['/home'])
         },
