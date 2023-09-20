@@ -1,26 +1,24 @@
 <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
-  <ion-input [class.is-invalid]="emailInvalid"
-    id="email"
-    fill="outline"
-    label="Email"
-    type="text"
-    placeholder="Ingrese su correo"
-    formControlName="email"
-    labelPlacement="floating"
-  ></ion-input>
+  <ion-input [class.is-invalid]="emailInvalid" id="username" fill="outline" label="Email" type="text"
+    placeholder="Ingrese su correo" formControlName="username" labelPlacement="floating">
+  </ion-input>
   <small *ngIf="emailInvalid" style="color:red;">Campo obligatorio</small>
-  <ion-input
-  [class.is-invalid]="passwordInvalid"
-    id="pass"
-    fill="outline"
-    label="Contraseña"
-    type="password"
-    placeholder="Ingresa Contraseña"
-    formControlName="pass"
-    labelPlacement="floating"
-    autocomplete="false"
-  ></ion-input>
+
+  <ion-input [class.is-invalid]="nameInvalid" id="name" fill="outline" label="Nombre" type="text"
+    placeholder="Ingrese su nombre" formControlName="name" labelPlacement="floating">
+  </ion-input>
+  <small *ngIf="nameInvalid" style="color:red;">Ingresa un nombre valido</small>
+
+  <ion-input id="last_name" fill="outline" label="Apellido" type="text" placeholder="Ingrese su apellido"
+    formControlName="last_name" labelPlacement="floating">
+  </ion-input>
+  <small style="color:#fecf6d;">Este campo no es obligatorio</small>
+
+  <ion-input [class.is-invalid]="passwordInvalid" id="pass" fill="outline" label="Contraseña" type="password"
+    placeholder="Ingresa Contraseña" formControlName="pass" labelPlacement="floating" autocomplete="false">
+  </ion-input>
   <small *ngIf="passwordInvalid" style="color:red;">La contraseña debe tener entre 8 a 20 caracteres</small>
+
   <ion-button id="sub-btn" expand="block" color="dark" fill="solid" type="submit">
     Ingresa
   </ion-button>

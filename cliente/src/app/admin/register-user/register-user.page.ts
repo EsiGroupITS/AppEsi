@@ -20,18 +20,25 @@ export class RegisterUserPage implements OnInit {
     ) { }
 
   ngOnInit() {
+    //Creamos el formulario y incluimos las validaciones necesarias
     this.registerForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required, Validators.email]],
       pass: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(8)]],
+      name: ['', [Validators.required, Validators.pattern(/^[A-Za-z\s\xF1\xD1]+$/), Validators.maxLength(25),Validators.minLength(3)]],
+      last_name: ['']
     });
   }
+  //Verificamos si los campos son invalidos y si ademas estos fueron tocados y quedaron vacios, para mostrar un error.
   get emailInvalid() {
-    return this.registerForm.get('email')?.invalid && this.registerForm.get('email')?.touched;
+    return this.registerForm.get('username')?.invalid && this.registerForm.get('username')?.touched;
   }
-  //Verificamos si la password es invalida, y ademas de si el campo fue tocado y quedo vacio, mostramos un error.
   get passwordInvalid() {
     return this.registerForm.get('pass')?.invalid && this.registerForm.get('pass')?.touched;
   }
+  get nameInvalid() {
+    return this.registerForm.get('name')?.invalid && this.registerForm.get('name')?.touched;
+  }
+
   ngOnDestroy(): void {
 
   }
@@ -44,7 +51,7 @@ export class RegisterUserPage implements OnInit {
       })
     } else {
       //Si el formulario es valido:
-      //Utilizamos el service para logear el usuario
+      //Utilizamos el service para registrar a el usuario
       this.authService.createUser(this.registerForm.value).subscribe({
         //todo ok
         next: (data: any) => {
@@ -54,11 +61,25 @@ export class RegisterUserPage implements OnInit {
         //Manejo de error.
         error: (err) => {
           // Alertamos por el error.
-          this.presentErrorAlert();
+          //Determinamos diferentes respuestas para los diferentes codigos de estado que envia el backend
+          switch (err.status) {
+            //En caso de un 409, mostramos un mensaje de que el email ya esta en uso.
+            case 409:
+              this.handleConflictError();
+              break;
+            //En caso de un 500, advertimos que el servidor tuvo una falla.
+            case 500:
+              this.handleInternalServerError();
+              break;
+              //En caso que venga algun otro estado del servidor que no este contemplado, ponemos un alerta generica.
+            default:
+              this.presentErrorAlert();
+          }
         }
       })
     }
   }
+  //ERROR GENERICO
   async presentErrorAlert() {
     const alert = await this.alertController.create({
       header: 'Error al crear el usuario',
@@ -68,10 +89,31 @@ export class RegisterUserPage implements OnInit {
 
     await alert.present();
   }
+  //ERROR 500
+  async handleInternalServerError() {
+    const alert = await this.alertController.create({
+      header: 'Error',
+      message: 'Ocurrio un error en el servidor, intentelo nuevamente en unos minutos o comuniquese con soporte.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+  //ERROR 409
+  async handleConflictError() {
+    const alert = await this.alertController.create({
+      header: 'Correo existente',
+      message: 'El correo ingresado ya esta en uso, porfavor ingrese otro.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+  //SUCCESS
   async successfullyCreated () {
     const alert = await this.alertController.create({
       header: 'Operacion exitosa',
-      message:'El usuario fue creado con exito, ya puede entrar',
+      message:'El usuario fue creado con exito.',
       buttons: ['OK']
     });
     await alert.present();
