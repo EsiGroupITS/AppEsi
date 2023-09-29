@@ -1,6 +1,32 @@
-<div class="container p-0 mx-0">
-  <div class="row mx-0 p-0">
-    <div class="col-md-4 d-flex bg-primary">Hola</div>
-    <div class="col-md-8 d-flex bg-blue">Chau</div>
+<div class="nav-side-menu">
+  <div class="brand">Administracion</div>
+  <i class="fa fa-bars fa-2x toggle-btn" data-target="#menu-content"></i>
+
+  <div class="menu-list">
+
+    <ul id="menu-content" class="menu-content collapse out">
+      <li data-toggle="collapse" class="collapsed">
+        <a href="#">Usuario</a>
+      </li>
+      <ul class="sub-menu collapse">
+        <li class="opcion">Crear usuario</li>
+        <li class="opcion">Desactivar cuentas</li>
+        <li class="opcion">Modificar datos de usuario</li>
+
+      </ul>
+      <!--Acceso a la informacion del perfil del administrador-->
+      <!-- <li>
+        <a href="#">
+          <i class="fa fa-user fa-lg"></i> Profile
+        </a>
+      </li> -->
+      <li data-toggle="collapse" class="collapsed">
+        <a href="#">Contenido</a>
+      </li>
+      <ul class="sub-menu collapse">
+        <li class="opcion">Crear contenido</li>
+        <li class="opcion">Modificar contenido</li>
+      </ul>
+    </ul>
   </div>
 </div>
