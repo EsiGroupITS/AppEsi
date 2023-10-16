@@ -11,10 +11,5 @@ export const uiReducer = createReducer(
   on(uiActions.changeTextSpacing, state => ({...state, text_spacing    : !state.text_spacing    })),
   on(uiActions.changeVisibility , state => ({...state, high_visibility : !state.high_visibility })),
   on(uiActions.changeFontType   , state => ({...state, fontDyslexic    : !state.fontDyslexic    })),
+  on(uiActions.changeLuminosity , state => ({...state, luminouse       : !state.luminouse       }))
 )
-
-
-
-
-
-
