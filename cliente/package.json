@@ -27,6 +27,7 @@
     "@ionic/angular": "^7.0.0",
     "@ngrx/store": "^15.2.0",
     "@ngrx/store-devtools": "^15.2.0",
+    "ar.js": "^2.2.2",
     "bootstrap": "^5.3.1",
     "ionicons": "^7.0.0",
     "jwt-decode": "^3.1.2",

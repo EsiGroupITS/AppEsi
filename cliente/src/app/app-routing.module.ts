@@ -30,6 +30,10 @@ const routes: Routes = [
     path: 'register-user',
     loadChildren: () => import('./admin/register-user/register-user.module').then( m => m.RegisterUserPageModule)
   },
+  {
+    path: 'lector-arjs',
+    loadChildren: () => import('./pages/lector-arjs/lector-arjs.module').then( m => m.LectorArjsPageModule)
+  },
 
 
 
