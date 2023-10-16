@@ -70,3 +70,51 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+/*
+
+-- Table structure for table `juegos`
+
+DROP TABLE IF EXISTS `juegos`;
+
+CREATE TABLE `juegos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `status` char(255) DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) 
+-- Table structure for table `participations`
+
+DROP TABLE IF EXISTS `participations`;
+
+CREATE TABLE `participations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `jugador_id` int(11) DEFAULT NULL,
+  `juego_id` int(11) DEFAULT NULL,
+  `status` char(255) DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `jugador_id` (`jugador_id`),
+  KEY `juego_id` (`juego_id`),
+  CONSTRAINT `participations_ibfk_1` FOREIGN KEY (`jugador_id`) REFERENCES `usuarios` (`id`),
+  CONSTRAINT `participations_ibfk_2` FOREIGN KEY (`juego_id`) REFERENCES `juegos` (`id`)
+) 
+
+-- Table structure for table `usuarios`
+
+DROP TABLE IF EXISTS `usuarios`;
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `status` char(255) DEFAULT '1',
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) 
+*/

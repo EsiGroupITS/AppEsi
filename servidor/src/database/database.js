@@ -1,11 +1,11 @@
-/*const mysql = require('promise-mysql');
+const mysql = require('promise-mysql');
 const config = require('../../config');
 
 const connection = mysql.createConnection({
     host:config.host,
     database:config.database,
     user:config.user,
-    password:config.password
+    password:config.password,
 })
 
 const getConnection = ()=> {
@@ -14,4 +14,4 @@ const getConnection = ()=> {
 
 module.exports = {
     getConnection
-}*/
+}

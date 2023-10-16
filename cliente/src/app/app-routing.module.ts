@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'welcome',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   {
@@ -26,6 +26,14 @@ const routes: Routes = [
   {
     path: 'admin/home',
     loadChildren: () => import('./admin/home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'consent',
+    loadChildren: () => import('./pages/games/consent-game/consent-game/consent-game.module').then( m => m.ConsentGamePageModule)
+  },
+  {
+    path: 'consent-game',
+    loadChildren: () => import('./pages/games/consent-game/consent-game/consent-game.module').then( m => m.ConsentGamePageModule)
   },
 
 
