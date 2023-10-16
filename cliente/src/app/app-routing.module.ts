@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'welcome',
     pathMatch: 'full',
   },
   {
@@ -34,6 +34,10 @@ const routes: Routes = [
   {
     path: 'consent-game',
     loadChildren: () => import('./pages/games/consent-game/consent-game/consent-game.module').then( m => m.ConsentGamePageModule)
+  },
+  {
+    path: 'game-puzzle',
+    loadChildren: () => import('./pages/game-puzzle/game-puzzle.module').then( m => m.GamePuzzlePageModule)
   },
 
 
