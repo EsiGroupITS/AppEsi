@@ -1,12 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { HomePage } from './home.page';
+import { ConsentGamePage } from './consent-game.page';
 
-describe('HomePage', () => {
-  let component: HomePage;
-  let fixture: ComponentFixture<HomePage>;
+describe('ConsentGamePage', () => {
+  let component: ConsentGamePage;
+  let fixture: ComponentFixture<ConsentGamePage>;
 
   beforeEach(async(() => {
-    fixture = TestBed.createComponent(HomePage);
+    fixture = TestBed.createComponent(ConsentGamePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

@@ -30,6 +30,18 @@ const routes: Routes = [
     path: 'register-user',
     loadChildren: () => import('./admin/register-user/register-user.module').then( m => m.RegisterUserPageModule)
   },
+  {
+    path: 'consent',
+    loadChildren: () => import('./pages/games/consent-game/consent-game/consent-game.module').then( m => m.ConsentGamePageModule)
+  },
+  {
+    path: 'consent-game',
+    loadChildren: () => import('./pages/games/consent-game/consent-game/consent-game.module').then( m => m.ConsentGamePageModule)
+  },
+  {
+    path: 'game-puzzle',
+    loadChildren: () => import('./pages/game-puzzle/game-puzzle.module').then( m => m.GamePuzzlePageModule)
+  },
 
 
 

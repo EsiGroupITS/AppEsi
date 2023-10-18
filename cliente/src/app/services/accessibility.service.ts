@@ -93,6 +93,7 @@ export class AccessibilityService {
   // TODO agregar variables para cada una de las opciones
 
   constructor(
+    // eslint-disable-next-line @ngrx/no-typed-global-store
     private store: Store<AppState>
   ) { }
 

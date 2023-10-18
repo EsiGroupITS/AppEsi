@@ -66,8 +66,8 @@ const register = async (req, res) => {
                         msg: 'Usuario creado con exito'
                     })
                 }
-            }
-        }*/
+            }*/
+        }
     } 
     catch(e) {
         res.status(500).json({
@@ -136,13 +136,15 @@ const getAll = async(req, res) => {
     }
     catch(e){
         res.status(400).json({
-            ok:false
+            ok:false,
+            e,
+            msg: 'Acá está el error'
         })
     }
 }
 
 
-export const methods = {
+module.exports = {
     register,
     login,
     getAll
