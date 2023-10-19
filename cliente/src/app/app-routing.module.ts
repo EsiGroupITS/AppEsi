@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'memory-game',
     pathMatch: 'full',
   },
   {
@@ -28,12 +28,8 @@ const routes: Routes = [
     loadChildren: () => import('./admin/home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'consent',
-    loadChildren: () => import('./pages/games/consent-game/consent-game/consent-game.module').then( m => m.ConsentGamePageModule)
-  },
-  {
-    path: 'consent-game',
-    loadChildren: () => import('./pages/games/consent-game/consent-game/consent-game.module').then( m => m.ConsentGamePageModule)
+    path: 'memory-game',
+    loadChildren: () => import('./pages/games/memory_game/memory-game/memory-game.module').then( m => m.MemoryGamePageModule)
   },
 
 
