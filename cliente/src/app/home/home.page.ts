@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'
 import * as userSelectors from '../ui-state/selectors/user.selectors'
 import { Store } from '@ngrx/store';
 
@@ -18,7 +19,8 @@ export class HomePage implements OnInit {
 
 
   constructor(
-    private store: Store
+    private store: Store,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -40,6 +42,10 @@ export class HomePage implements OnInit {
       const htmlElement: HTMLElement | null = document.getElementById(e)
       htmlElement?.classList.remove(_class)
     }
+  }
+
+  navigatePuzzle() {
+    this.router.navigate(['game-puzzle'])
   }
 
 

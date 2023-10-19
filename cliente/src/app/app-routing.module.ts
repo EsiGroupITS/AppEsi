@@ -21,7 +21,7 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginPage,
-    //loadChildren: () => import('./shared/modules/accesibility/accesibility.module').then( m => m.AccesibilityModule)
+    loadChildren: () => import('./shared/modules/accesibility/accesibility.module').then( m => m.AccesibilityModule)
   },
   {
     path: 'admin/home',
@@ -30,6 +30,10 @@ const routes: Routes = [
   {
     path: 'memory-game',
     loadChildren: () => import('./pages/games/memory_game/memory-game/memory-game.module').then( m => m.MemoryGamePageModule)
+  },
+  {
+    path: 'game-puzzle',
+    loadChildren: () => import('./pages/game-puzzle/game-puzzle.module').then( m => m.GamePuzzlePageModule)
   },
 
 
