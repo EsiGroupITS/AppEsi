@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game-puzzle',
@@ -9,7 +10,11 @@ export class GamePuzzlePage implements OnInit {
 
   loading: boolean = false
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
+
+  image: string = "../../../assets/img/aprepfem_360x324.jpg"
 
   ngOnInit() {
 
@@ -64,6 +69,10 @@ export class GamePuzzlePage implements OnInit {
         }
       }
     }
+  }
+
+  goBack() {
+    this.router.navigate(['home'])
   }
 
 }
