@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'memory-game',
+    redirectTo: 'welcome',
     pathMatch: 'full',
   },
   {

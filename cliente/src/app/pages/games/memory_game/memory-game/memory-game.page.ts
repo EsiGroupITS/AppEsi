@@ -1,6 +1,5 @@
-
 import { Component, OnInit } from '@angular/core';
-
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-memory-game',
@@ -34,7 +33,7 @@ export class MemoryGamePage implements OnInit{
   public selectOldPosix = -1; // Store old position
   public debugText = "Debug text goes here! :)"
 
-  constructor() { }
+  constructor(private modalController: ModalController) { }
 
   ngOnInit() {
   this.restartGame();
@@ -113,7 +112,7 @@ export class MemoryGamePage implements OnInit{
   restartGame() {
     this.gameState = 'load';
     this.startGame = false;
-    this.countDown = 3;
+    this.countDown = 5;
     this.totalTime = 60;
     this.countTime = 0;
     this.shownTime = 0;
