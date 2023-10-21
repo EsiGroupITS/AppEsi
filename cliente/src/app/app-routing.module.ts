@@ -42,6 +42,10 @@ const routes: Routes = [
     path: 'game-puzzle',
     loadChildren: () => import('./pages/game-puzzle/game-puzzle.module').then( m => m.GamePuzzlePageModule)
   },
+  {
+    path: 'roulette',
+    loadChildren: () => import('./pages/games/roulette/roulette.module').then( m => m.RoulettePageModule)
+  },
 
 
 

@@ -1,0 +1,16 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+@import url(https://fonts.googleapis.com/css?family=Chewy);
+
+/* Agrega cualquier estilo adicional necesario aquí */
+#ruleta {
+    position: relative; // Establece la posición relativa en el contenedor
+  }
+  
+  #puntero {
+    position: absolute; // Establece la posición absoluta dentro del contenedor relativo
+    top: 50%; // Centra verticalmente en relación con el contenedor
+    left: 50%; // Centra horizontalmente en relación con el contenedor
+    transform: translate(-50%, -50%); // Centra el punto de origen del puntero
+    width: 100px; // Establece el ancho deseado para el puntero
+    cursor: pointer; // Cambia el cursor cuando se pasa por encima
+  }
