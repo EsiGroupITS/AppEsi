@@ -7,109 +7,76 @@
   </ion-toolbar>
 </ion-header>
 
-
-<!--TODO implements BACK BUTTON-->
-
 <ion-content>
+
   <div class="intentos" *ngIf="!startGame">
-
     <h4 class="intro">Bienvenido/a al juego de memoria</h4>
-    <h5 class="intro-sbt">Tendras que encontrar las tarjetas iguales en menos de 1 minuto <span class="sbt">¿Lo
-        lograrás?</span></h5>
-
-    <!--Init screen-->
+    <h5 class="intro-sbt">Encuentra las tarjetas iguales en menos de 1 minuto <span class="sbt">¿Lo lograrás?</span></h5>
     <p>Tienes <b style="color: rgb(255, 142, 127);">{{userLife}}</b> intentos</p>
-
-    <h4>El juego Comienza en <span style="color:rgb(255, 142, 127); font-size: 24px;"> {{countDown}}...</span></h4>
+    <h4>El juego comienza en <span style="color:rgb(255, 142, 127); font-size: 24px;">{{countDown}}...</span></h4>
   </div>
 
   <div *ngIf="startGame && gameState === 'init'">
     <ion-col col-9>
-      <p class="intentos-restantes">Te quedan: &nbsp; <span style="color:rgb(255, 142, 127); font-size: 24px;">
-          {{userLife}} intentos</span></p>
+      <p class="intentos-restantes">Te quedan: &nbsp; <span style="color:rgb(255, 142, 127); font-size: 24px;">{{userLife}} intentos</span></p>
     </ion-col>
   </div>
 
-
-  <!-- Actual cards display-->
-  <div class="container">
-    <ion-row class="juego" align-items-center text-center size="8" *ngIf="startGame && gameState === 'init'">
-
-      <ion-col align-self-center size="3" *ngFor="let c of cardsArray; let i = index">
-
-        <!-- Show card background -->
-        <img src="../../../../../assets/img/memory_game/Kidsboy.png"
-          *ngIf="c.pos !== selectCard1pos && c.pos !== selectCard2pos && c.val > -1"
-          (click)="selectCard(c.pos, c.val, i)"
-          style="width:80px; height:120px; border: solid 2px #000; border-radius: 12px;">
-
-        <!-- Show card 1 selected -->
-        <img [src]="imageDir + images[c.val] + '.svg'" *ngIf="c.pos === selectCard1pos && c.val > -1"
-          style="width:80px; height:120px; border: solid 2px #000; border-radius: 12px;">
-
-        <!-- Show card 2 selected -->
-        <img [src]="imageDir + images[c.val] + '.svg'" *ngIf="c.pos === selectCard2pos && c.val > -1"
-          style="width:80px; height:120px; border: solid 2px #000; border-radius: 12px;">
-
-        <!-- Show hidden card -->
-        <img *ngIf="c.val === -1"
-          style="width:80px; height:120px; border: solid 2px #000; border-radius: 12px; visibility: hidden;">
-
+  <div class="container" *ngIf="startGame && gameState === 'init'">
+    <ion-row class="juego" align-items-center text-center size="8">
+      <ion-col align-self-center size="4" *ngFor="let c of cardsArray; let i = index">
+        <!-- Card Display -->
+        <div class="card" (click)="selectCard(c.pos, c.val, i)" *ngIf="c.pos !== selectCard1pos && c.pos !== selectCard2pos && c.val > -1">
+          <img src="../../../../../assets/img/memory_game/Kidsboy.png" style="width:90px; height:100px; border: solid 2px #000; border-radius: 12px;">
+        </div>
+        <!-- Card 1 Selected -->
+        <img [src]="imageDir + images[c.val] + '.svg'" *ngIf="c.pos === selectCard1pos && c.val > -1" style="width:90px; height:100px; border: solid 2px #000; border-radius: 12px;">
+        <!-- Card 2 Selected -->
+        <img [src]="imageDir + images[c.val] + '.svg'" *ngIf="c.pos === selectCard2pos && c.val > -1" style="width:90px; height:100px; border: solid 2px #000; border-radius: 12px;">
+        <!-- Hidden Card -->
+        <img *ngIf="c.val === -1" style="width:90px; height:100px; border: solid 2px #000; border-radius: 12px; visibility: hidden;">
       </ion-col>
-
     </ion-row>
   </div>
-
-  <!-- Init GAME-->
 
   <div *ngIf="startGame && gameState === 'init'">
     <ion-row>
       <ion-col>
-        <p class="time"> Tiempo Restante: &nbsp;<span style="color:rgb(216, 14, 54); font-size: 24px;">
-            {{shownTime}}</span></p>
+        <p class="time">Tiempo Restante: &nbsp;<span style="color:rgb(216, 14, 54); font-size: 24px;">{{shownTime}}</span></p>
       </ion-col>
     </ion-row>
   </div>
 
-  <!--Win game Screen, TODO: Cambiar por un MODAL -->
-  <div *ngIf="gameState === 'win'">
-    <div class="game-win">
-      <h1 class="win-title">GG!</h1>
-      <h1 class="win-sbt">Felicidades! Ganaste</h1>
-      <ion-icon class="trophy" name="trophy-outline"></ion-icon>
-      <p class="win-text">¿Quieres volver a intentarlo?</p>
-
-      <div class="buttons">
-        <ion-button size="normal" color="danger" (click)="restartGame()">
-          <ion-icon name="repeat"></ion-icon>
-          &nbsp;&nbsp; Volver a Jugar
-        </ion-button>
-        <ion-button routerLink="/home" size="normal" color="success">
-          <ion-icon name="game-controller-outline"></ion-icon>
-          &nbsp;&nbsp; Mas Juegos
-        </ion-button>
-      </div>
+  <div *ngIf="gameState === 'win'" class="game-win">
+    <h1 class="win-title">¡GG!</h1>
+    <h1 class="win-sbt">¡Felicidades! Ganaste</h1>
+    <ion-icon class="trophy" name="trophy-outline"></ion-icon>
+    <p class="win-text">¿Quieres volver a intentarlo?</p>
+    <div class="buttons">
+      <ion-button size="normal" color="danger" (click)="restartGame()">
+        <ion-icon name="repeat"></ion-icon>
+        &nbsp;&nbsp;Volver a Jugar
+      </ion-button>
+      <ion-button routerLink="/home" size="normal" color="success">
+        <ion-icon name="game-controller-outline"></ion-icon>
+        &nbsp;&nbsp;Más Juegos
+      </ion-button>
     </div>
   </div>
 
-  <!--Lose game Screen, TODO: Cambiar por un MODAL-->
-
-  <div *ngIf="gameState === 'lose'">
-    <div class="game-over">
-      <h1 class="game-over-title">Game Over</h1>
-      <h1 class="game-over-sbt">Fin del juego</h1>
-      <p class="game-over-text">Mala suerte! Perdiste. ¿Quieres volver a intentarlo?</p>
-
-      <div class="buttons">
-        <ion-button size="normal" color="danger" (click)="restartGame()">
-          <ion-icon name="repeat"></ion-icon>
-          &nbsp;&nbsp; Volver a Jugar
-        </ion-button>
-        <ion-button routerLink="/home" size="normal" color="success">
-          <ion-icon name="game-controller-outline"></ion-icon>
-          &nbsp;&nbsp; Mas Juegos
-        </ion-button>
-      </div>
+  <div *ngIf="gameState === 'lose'" class="game-over">
+    <h1 class="game-over-title">Game Over</h1>
+    <h1 class="game-over-sbt">Fin del juego</h1>
+    <p class="game-over-text">¡Mala suerte! Perdiste. ¿Quieres volver a intentarlo?</p>
+    <div class="buttons">
+      <ion-button size="normal" color="danger" (click)="restartGame()">
+        <ion-icon name="repeat"></ion-icon>
+        &nbsp;&nbsp;Volver a Jugar
+      </ion-button>
+      <ion-button routerLink="/home" size="normal" color="success">
+        <ion-icon name="game-controller-outline"></ion-icon>
+        &nbsp;&nbsp;Más Juegos
+      </ion-button>
     </div>
   </div>
 
