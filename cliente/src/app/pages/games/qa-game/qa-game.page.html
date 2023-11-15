@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <div class="home-wrapper" id="home-wrapper">
+    <div class="overlay" *ngIf="loading">
+      <ion-spinner name="circular" color="light"></ion-spinner>
+    </div>
+    <div class="header"></div>
+    <div class="content">
+      <ion-card color="danger">
+        <ion-card-header>
+          <ion-card-subtitle>Sistema Reproductor</ion-card-subtitle>
+          <ion-card-title>Pregunta 1</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div class="timer-div">
+            <span class="time-left">10s</span>
+            <ion-icon slot="end" name="time-outline"></ion-icon>
+          </div>
+          <div id="q-container">
+            <!-- questions and options will be displayed here -->
+          </div>
+        </ion-card-content>
+      </ion-card>
+      <ion-button (click)="goBack()" expand="block" fill="clear">
+        Volver
+      </ion-button>
+    </div>
+
+
+  </div>
+</ion-header>

@@ -48,6 +48,10 @@ export class HomePage implements OnInit {
     this.router.navigate(['game-puzzle'])
   }
 
+  navigateQAGame() {
+    this.router.navigate(['qa-game'])
+  }
+
 
 
 }

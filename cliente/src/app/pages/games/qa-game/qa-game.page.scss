@@ -1,0 +1,27 @@
+@import url('../../game-puzzle/game-puzzle.page.scss');
+
+ion-card {
+  ion-card-content {
+    .timer-div {
+      width: 290px;
+      height: 20px;
+      display: flex;
+      flex-direction: row-reverse;
+      ion-icon {
+        margin: auto 2px;
+      }
+    }
+    #display-container {
+      background-color: #ffffff;
+      padding: 3.1em 1.8em;
+      width: 80%;
+      max-width: 37.5em;
+      margin: 0 auto;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+      border-radius: 0.6em;
+    }
+  }
+}
