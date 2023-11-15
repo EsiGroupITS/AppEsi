@@ -1,16 +1,12 @@
 <ion-content>
-  <ion-card>
-    <ion-card-content>
+  <ion-card-content>
+    <h1 class="text">
+      ¡Anímate!<br>
+    </h1>
 
-      <p style="font-family: 'Source Sans Pro'; font-size: 14px; text-align: center;" class="text">
-        ¡Anímate!<br>
-        Gira la ruleta y prepárate para responder!
-      </p>
-
-      <div style="text-align: center;" class="rulettecontainer">
-        <img id="ruleta" src="../../../../assets/img/ruletaprueba.png">
-        <img id="puntero" src="https://i.ibb.co/SPJzPqn/puntero.png"(click)="girarRuleta()" style="width: 100px;">
-      </div>
-    </ion-card-content>
-  </ion-card>
+    <div style="text-align: center;" class="rulettecontainer">
+      <img id="ruleta" src="../../../../assets/img/ruleta.png">
+      <img id="puntero" src="../../../../assets/img/puntero.png" (click)="girarRuleta()" style="width: 100px;">
+    </div>
+  </ion-card-content>
 </ion-content>

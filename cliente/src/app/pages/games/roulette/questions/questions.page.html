@@ -1,0 +1,22 @@
+<ion-content [fullscreen]="true">
+  <div class="center">
+    <ion-img src="../../../../../assets/img/backgroundquestion.png" class="ion-align-self-start"></ion-img>
+    <ion-row class="text-overlay">
+      <ion-col class="question" size="7"><p>{{this.question}}</p></ion-col>
+    </ion-row>
+  </div>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col [class.correct]="answered && correct_answer === answer0" [class.incorrect]="answered && selectedAnswer === answer0 && selectedAnswer !== correct_answer" class="answer" size="7" (click)="checkAnswer(answer0)">{{this.answer0}}</ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col [class.correct]="answered && correct_answer === answer1" [class.incorrect]="answered && selectedAnswer === answer1 && selectedAnswer !== correct_answer" class="answer" size="7" (click)="checkAnswer(answer1)">{{this.answer1}}</ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col [class.correct]="answered && correct_answer === answer2" [class.incorrect]="answered && selectedAnswer === answer2 && selectedAnswer !== correct_answer" class="answer" size="7" (click)="checkAnswer(answer2)">{{this.answer2}}</ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col [class.correct]="answered && correct_answer === answer3" [class.incorrect]="answered && selectedAnswer === answer3 && selectedAnswer !== correct_answer" class="answer" size="7" (click)="checkAnswer(answer3)">{{this.answer3}}</ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

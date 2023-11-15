@@ -30,8 +30,8 @@
 
 // agregado fuente Dyslexic Friendly
 @font-face {
-    font-family: 'OpenDyslexic-Regular';
-    src: url(./assets/fonts/OpenDyslexic-Regular.otf) format('opentype');
+  font-family: 'OpenDyslexic-Regular';
+  src: url(./assets/fonts/OpenDyslexic-Regular.otf) format('opentype');
 }
 
 
@@ -42,94 +42,115 @@
 
 // clase para contraste negro MSO
 .constrast-black {
-    img {
-        opacity: 0.0 !important;
-    }
-    background: black !important;
-    color: #fff !important;
+  img {
+    opacity: 0.0 !important;
+  }
 
-    .bullet.active {
-      background: #fff !important;
-    }
+  background: black !important;
+  color: #fff !important;
+
+  .bullet.active {
+    background: #fff !important;
+  }
 
 }
 
 // clase para fuente amigable con dislexia MSO
 .dyslexic-font {
-    font-family: 'OpenDyslexic-Regular', sans-serif !important;
-    p {
-      font-size: 1em !important;
+  font-family: 'OpenDyslexic-Regular', sans-serif !important;
+
+  p {
+    font-size: 1em !important;
+  }
+
+  .medium-font {
+    h1 {
+      font-size: 2.3em !important;
     }
-    .medium-font{
-      h1{
-        font-size: 2.3em !important;
-      }
-      .space-letter{
-        letter-spacing: 1.1px !important;
-      }
+
+    .space-letter {
+      letter-spacing: 1.1px !important;
     }
-    .space-letter{
-      letter-spacing: 1.2px !important;
-    }
+  }
+
+  .space-letter {
+    letter-spacing: 1.2px !important;
+  }
 }
 
 // clase para aumentar tamaño de texto (Facu)
 .medium-font {
-    p {
-      font-size: 1.2em !important;
-    }
-    h1 {
-      font-size: 2.65em !important;
-    }
-    h2{
-      font-size: 5em !important;
-    }
-    .label-text{
-      font-size: 20px !important;
-    }
+  p {
+    font-size: 1.2em !important;
+  }
+
+  h1 {
+    font-size: 2.65em !important;
+  }
+
+  h2 {
+    font-size: 5em !important;
+  }
+
+  .label-text {
+    font-size: 20px !important;
+  }
 }
 
 // Clase para alto contraste para personas con visibilidad reducida/daltónicos (Javi)
 .high-visibility {
-    img {
-        opacity: 0.0 !important;
-    }
+  img {
+    opacity: 0.0 !important;
+  }
 
-    h1, h2, h3, h4, p {
-      color:#4d333b !important;
-    }
-
-
-    ion-input{
-        background: #4d333b;
-        color: #e5ca99;
-        --highlight-color-focused: #e5ca99;
-        }
-
-    .ion-color-dark {
-            --ion-color-base: #4d333b !important;
-            --ion-color-contrast: #e5ca99 !important;
-    }
+  h1,
+  h2,
+  h3,
+  h4,
+  p {
+    color: #4d333b !important;
+  }
 
 
-    #access-logo-ctn {
-        color: #4d333b;
-        border: 5px solid #4d333b !important;
-        --ion-color-primary: #e5ca99 !important;
-        background: #4d333b !important;
-    }
+  ion-input {
+    background: #4d333b;
+    color: #e5ca99;
+    --highlight-color-focused: #e5ca99;
+  }
 
-    background: #e5ca99 !important;
+  .ion-color-dark {
+    --ion-color-base: #4d333b !important;
+    --ion-color-contrast: #e5ca99 !important;
+  }
+
+
+  #access-logo-ctn {
+    color: #4d333b;
+    border: 5px solid #4d333b !important;
+    --ion-color-primary: #e5ca99 !important;
+    background: #4d333b !important;
+  }
+
+  background: #e5ca99 !important;
 
 }
 
 
 //Clase para espaciado de letras (Moyano)
-.space-letter{
-    letter-spacing: 1.3px;
+.space-letter {
+  letter-spacing: 1.3px;
 }
 
 //filtro para luminosidad
 /*.bright{
   filter: brightness(150%);
 }*/
+
+// Alerta en el juego de ruleta.
+.alertText {
+  --background: #D9AFD9;
+  --background: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
+}
+.alertTextAnswers {
+  --background: #FFFF;
+}

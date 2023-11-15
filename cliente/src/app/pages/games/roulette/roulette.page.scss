@@ -12,5 +12,9 @@
     left: 50%; // Centra horizontalmente en relación con el contenedor
     transform: translate(-50%, -50%); // Centra el punto de origen del puntero
     width: 100px; // Establece el ancho deseado para el puntero
-    cursor: pointer; // Cambia el cursor cuando se pasa por encima
   }
+.text {
+  font-family: 'Source Sans Pro'; 
+  text-align: center;
+}
+.tracking-in-contract{animation:tracking-in-contract 0.4s linear both} @keyframes tracking-in-contract{0%{letter-spacing:.6em;opacity:0}40%{opacity:.6}100%{letter-spacing:normal;opacity:1}}

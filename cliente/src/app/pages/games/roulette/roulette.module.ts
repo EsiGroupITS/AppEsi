@@ -12,7 +12,9 @@ import { RoulettePage } from './roulette.page';
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
+    IonicModule.forRoot({
+      innerHTMLTemplatesEnabled: true
+    }),
     RoulettePageRoutingModule
   ],
   declarations: [RoulettePage]

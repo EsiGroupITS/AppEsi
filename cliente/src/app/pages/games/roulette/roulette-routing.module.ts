@@ -6,8 +6,13 @@ import { RoulettePage } from './roulette.page';
 const routes: Routes = [
   {
     path: '',
-    component: RoulettePage
+    component: RoulettePage,
+  },
+  {
+    path: 'questions/:mensaje',
+    loadChildren: () => import('./questions/questions.module').then( m => m.QuestionsPageModule)
   }
+
 ];
 
 @NgModule({
