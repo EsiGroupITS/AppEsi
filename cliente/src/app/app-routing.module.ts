@@ -26,6 +26,13 @@ const routes: Routes = [
   {
     path: 'admin/home',
     loadChildren: () => import('./admin/home/home.module').then( m => m.HomePageModule)
+  },  {
+    path: 'register-user',
+    loadChildren: () => import('./admin/register-user/register-user.module').then( m => m.RegisterUserPageModule)
+  },
+  {
+    path: 'lector-arjs',
+    loadChildren: () => import('./pages/lector-arjs/lector-arjs.module').then( m => m.LectorArjsPageModule)
   },
   {
     path: 'consent',
@@ -39,6 +46,7 @@ const routes: Routes = [
     path: 'game-puzzle',
     loadChildren: () => import('./pages/game-puzzle/game-puzzle.module').then( m => m.GamePuzzlePageModule)
   },
+
 
 
 ];
