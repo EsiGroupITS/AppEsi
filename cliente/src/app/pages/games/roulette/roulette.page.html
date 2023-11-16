@@ -1,0 +1,20 @@
+<ion-content>
+
+  <!-- Contenido de la tarjeta -->
+  <ion-card-content>
+
+    <!-- Encabezado principal -->
+    <h1 class="text">
+      ¡Anímate!
+    </h1>
+
+    <!-- Contenedor para la ruleta -->
+    <div style="text-align: center;" class="rulettecontainer">
+      <!-- Imagen de la ruleta -->
+      <img id="ruleta" src="../../../../assets/img/ruleta.png">
+
+      <!-- Imagen del puntero (botón para girar la ruleta) -->
+      <img id="puntero" src="../../../../assets/img/puntero.png" (click)="girarRuleta()" style="width: 100px;">
+    </div>
+  </ion-card-content>
+</ion-content>

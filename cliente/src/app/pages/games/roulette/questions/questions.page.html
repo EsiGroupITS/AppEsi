@@ -1,0 +1,62 @@
+<ion-content [fullscreen]="true">
+
+  <!-- Contenedor principal -->
+  <div class="center">
+
+    <!-- Imagen de fondo -->
+    <ion-img src="../../../../../assets/img/backgroundquestion.png" class="ion-align-self-start"></ion-img>
+
+    <!-- Fila para superponer texto sobre la imagen -->
+    <ion-row class="text-overlay">
+      <!-- Columna para mostrar la pregunta -->
+      <ion-col class="question" size="7">
+        <p>{{this.question}}</p>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <!-- Cuadrícula para mostrar las respuestas -->
+  <ion-grid>
+
+    <!-- Fila para la primera respuesta -->
+    <ion-row class="ion-justify-content-center">
+      <!-- Columna para la respuesta, con clases de estilo condicionales -->
+      <ion-col [class.correct]="answered && correct_answer === answer0"
+        [class.incorrect]="answered && selectedAnswer === answer0 && selectedAnswer !== correct_answer" class="answer"
+        size="7" (click)="checkAnswer(answer0)">
+        {{this.answer0}}
+      </ion-col>
+    </ion-row>
+
+    <!-- Fila para la segunda respuesta -->
+    <ion-row class="ion-justify-content-center">
+      <!-- Columna para la respuesta, con clases de estilo condicionales -->
+      <ion-col [class.correct]="answered && correct_answer === answer1"
+        [class.incorrect]="answered && selectedAnswer === answer1 && selectedAnswer !== correct_answer" class="answer"
+        size="7" (click)="checkAnswer(answer1)">
+        {{this.answer1}}
+      </ion-col>
+    </ion-row>
+
+    <!-- Fila para la tercera respuesta -->
+    <ion-row class="ion-justify-content-center">
+      <!-- Columna para la respuesta, con clases de estilo condicionales -->
+      <ion-col [class.correct]="answered && correct_answer === answer2"
+        [class.incorrect]="answered && selectedAnswer === answer2 && selectedAnswer !== correct_answer" class="answer"
+        size="7" (click)="checkAnswer(answer2)">
+        {{this.answer2}}
+      </ion-col>
+    </ion-row>
+
+    <!-- Fila para la cuarta respuesta -->
+    <ion-row class="ion-justify-content-center">
+      <!-- Columna para la respuesta, con clases de estilo condicionales -->
+      <ion-col [class.correct]="answered && correct_answer === answer3"
+        [class.incorrect]="answered && selectedAnswer === answer3 && selectedAnswer !== correct_answer" class="answer"
+        size="7" (click)="checkAnswer(answer3)">
+        {{this.answer3}}
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

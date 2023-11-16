@@ -1,0 +1,20 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+@import url(https://fonts.googleapis.com/css?family=Chewy);
+
+/* Agrega cualquier estilo adicional necesario aquí */
+#ruleta {
+    position: relative; // Establece la posición relativa en el contenedor
+  }
+  
+  #puntero {
+    position: absolute; // Establece la posición absoluta dentro del contenedor relativo
+    top: 50%; // Centra verticalmente en relación con el contenedor
+    left: 50%; // Centra horizontalmente en relación con el contenedor
+    transform: translate(-50%, -50%); // Centra el punto de origen del puntero
+    width: 100px; // Establece el ancho deseado para el puntero
+  }
+.text {
+  font-family: 'Source Sans Pro'; 
+  text-align: center;
+}
+.tracking-in-contract{animation:tracking-in-contract 0.4s linear both} @keyframes tracking-in-contract{0%{letter-spacing:.6em;opacity:0}40%{opacity:.6}100%{letter-spacing:normal;opacity:1}}

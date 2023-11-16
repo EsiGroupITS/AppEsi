@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+.answer {
+    margin-top: 5px;
+    border: 2px solid #e9ecef;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 10px;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center
+  }
+  
+  .center {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 20px;
+    border: 2px solid #67BBB6;
+    overflow: hidden;
+  }
+  
+  ion-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    filter: blur(1px);
+  }
+  
+  .text-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .question {
+    font-family: 'Lato', sans-serif;
+  }
+  
+  .text-overlay p {
+      text-align: center;
+      color: #353535;
+      font-size: 20px;
+      margin: 0;
+      padding: 10px;
+  }
+  
+  .correct {
+    border: 2px solid #00d107;
+      background-color: #33ff3a; // Color de fondo para respuestas correctas
+  }
+  
+  .incorrect {
+      background-color: red; // Color de fondo para respuestas incorrectas
+  }

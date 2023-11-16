@@ -23,9 +23,11 @@ import { userReducer } from './ui-state/reducers/user.reducer';
   declarations: [AppComponent, AccessibilityComponent],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({
+      innerHTMLTemplatesEnabled: true
+    }),
     AppRoutingModule,
-    StoreModule.forRoot({ui: uiReducer, user: userReducer}),
+    StoreModule.forRoot({ui: uiReducer, user: userReducer,}),
     WelcomePageModule,
     LoginPageModule,
     HttpClientModule,
