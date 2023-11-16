@@ -13,16 +13,20 @@ export class RoulettePage {
   ngOnInit() {
 
   }
+  // Método para hacer girar la ruleta
   async girarRuleta() {
+    // Obtén referencias a los elementos de la ruleta y el puntero
     const ruleta = document.getElementById('ruleta');
     const puntero = document.getElementById('puntero');
   
     if (ruleta && puntero) {
+      // Genera un grado aleatorio para la rotación de la ruleta
       const gira = 1200 + Math.random() * 1200;
       puntero.style.pointerEvents = 'none';
       ruleta.style.transition = 'all 10s ease-out';
       ruleta.style.transform = `rotate(${gira}deg)`;
   
+      // Agrega un event listener para el final de la transición
       ruleta.addEventListener('transitionend', async () => {
         puntero.style.pointerEvents = 'auto';
         ruleta.style.transition = 'none';
@@ -47,8 +51,10 @@ export class RoulettePage {
             mensaje = 'GENERO';
         }
   
+        // Define una imagen para la alerta
         let img = '../../../../assets/img/imagen_alerta.png';
-        // Muestra un alert con el mensaje
+  
+        // Muestra una alerta con el mensaje e imagen
         const alert = await this.alertController.create({
           message: new IonicSafeString(`<img src="${img}" alt="photo"  /> Te deseamos suerte, tomate tu tiempo`),
           cssClass: 'alertText',
@@ -66,5 +72,4 @@ export class RoulettePage {
       });
     }
   }
-
 }
