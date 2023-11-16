@@ -3,10 +3,12 @@
 
 
 
+
 .home-wrapper {
   .body {
     display: flex;
     flex-direction: column;
+
     .title {
       h3 {
         color: black !important;
@@ -47,6 +49,7 @@
 }
 
 .tile1 {
+
   background-position: left top !important;
 }
 
@@ -89,4 +92,5 @@ ion-button {
   height: 40px;
   width: 200px;
 }
+
 

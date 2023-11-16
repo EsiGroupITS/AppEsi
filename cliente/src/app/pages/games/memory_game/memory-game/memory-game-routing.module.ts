@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ConsentGamePage } from './consent-game.page';
+import { MemoryGamePage } from './memory-game.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ConsentGamePage
+    component: MemoryGamePage
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes), ],
   exports: [RouterModule],
 })
-export class ConsentGamePageRoutingModule {}
+export class MemoryGamePageRoutingModule {}

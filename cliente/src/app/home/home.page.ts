@@ -49,5 +49,11 @@ export class HomePage implements OnInit {
   }
 
 
+  navigateMemory(){
+    this.router.navigate(['memory-game'])
+  }
+
+
+
 
 }
