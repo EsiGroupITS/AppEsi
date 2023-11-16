@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ConsentGamePageRoutingModule } from './consent-game-routing.module';
+import { LectorArjsPageRoutingModule } from './lector-arjs-routing.module';
 
-import { ConsentGamePage } from './consent-game.page';
+import { LectorArjsPage } from './lector-arjs.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ConsentGamePageRoutingModule
+    LectorArjsPageRoutingModule
   ],
-  declarations: [ConsentGamePage]
+  declarations: [LectorArjsPage]
 })
-export class ConsentGamePageModule {}
+export class LectorArjsPageModule {}
