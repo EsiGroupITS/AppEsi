@@ -39,7 +39,6 @@ export class LoginPage implements OnInit {
   constructor(
     private router: Router,
     private store: Store,
-    //Borrar si es necesario
     private authService: AuthenticationService,
     private cookies: CookieService,
     private formBuilder: FormBuilder,

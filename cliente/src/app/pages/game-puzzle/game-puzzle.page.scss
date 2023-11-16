@@ -1,7 +1,14 @@
 @import url(../../home/home.page.scss);
 
+
+
+
+
 .home-wrapper {
   .body {
+    display: flex;
+    flex-direction: column;
+
     .title {
       h3 {
         color: black !important;
@@ -42,42 +49,48 @@
 }
 
 .tile1 {
-  background-position: left top;
+
+  background-position: left top !important;
 }
 
 .tile2 {
-  background-position: center top;
+  background-position: center top !important;
 }
 
 .tile3 {
-  background-position: right top;
+  background-position: right top !important;
 }
 
 .tile4 {
-  background-position: left center;
+  background-position: left center !important;
 }
 
 .tile5 {
-  background-position: center center;
+  background-position: center center !important;
 }
 
 .tile6 {
-  background-position: right center;
+  background-position: right center !important;
 }
 
 .tile7 {
-  background-position: left bottom;
+  background-position: left bottom !important;
 }
 
 .tile8 {
-  background-position: center bottom;
+  background-position: center bottom !important;
 }
 
 .tile9 {
-  background: white;
+  background: #fff;
   cursor: default;
+  // background-position: right bottom !important
 }
 
 ion-button {
-  margin: 2rem auto;
+  margin: 1rem auto;
+  height: 40px;
+  width: 200px;
 }
+
+
