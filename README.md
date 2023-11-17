@@ -66,6 +66,8 @@ El backend de la aplicación está escrito en TypeScript, un lenguaje de program
 ## Manejo de estado con NGRX
 
 La aplicación utiliza NGRX para gestionar el estado de la aplicación. NGRX es una biblioteca de estado para Angular que permite gestionar el estado de la aplicación de manera eficiente y escalable.
+Esquema de trabajo de NGRX:
+https://res.cloudinary.com/practicaldev/image/fetch/s--rAdE036F--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://ngrx.io/generated/images/guide/store/state-management-lifecycle.png
 
 ## Implementación de juegos HTML CSS
 
