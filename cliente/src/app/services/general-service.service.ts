@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class GeneralServiceService {
 
     // TODO: ALMACENAR baseUrl EN VARIABLES DE ENTORNO
-    private baseUrl = "http://localhost:3040/"
+    private baseUrl = "https://api.esi.hvdevs.com/"
 
     //# EXCELENTE
     private urlGetQuestions = this.baseUrl+"questions/category"

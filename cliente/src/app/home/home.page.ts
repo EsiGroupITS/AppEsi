@@ -56,6 +56,10 @@ export class HomePage implements OnInit {
     this.router.navigate(['roulette'])
   }
 
+  navigateAR() {
+    this.router.navigate(['lector-arjs'])
+  }
+
 
 
 }

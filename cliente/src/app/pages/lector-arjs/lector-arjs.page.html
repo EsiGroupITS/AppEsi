@@ -1,7 +1,12 @@
 <ion-content [fullscreen]="true">
-  <div>
-    <!--AR.js embedido que viene desde assets/scenearjs/arjs.html-->
-    <iframe src="../../../assets/scenearjs/arjs.html" width="500" height="500"></iframe>
+  <div class="frame">
+    <!-- AR.js embedido que viene desde assets/scenearjs/arjs.html -->
+    <iframe src="../../../assets/scenearjs/arjs.html" width="500" height="550"></iframe>
+  </div>
+  <div class="btnbtn">
+    <ion-button  (click)="navigate()" color="dark" expand="block" fill="solid">
+      Volver
+    </ion-button>
   </div>
 </ion-content>
 

@@ -1,17 +1,37 @@
-div{
-    display: flex;  /* Make flex container */
-    justify-content: center; /* Center horizontally */
-    align-items: center;
-    padding: 10px;
-    height: 300px;
-    margin-top: 150px;
-}
+
 ion-content {
     --background: none;
     background-image: url('../../../assets/img/welcome/005.png');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
+    .frame {
+      width: 100vw;
+      height: calc(100vh - 80px);
+      background: rgba(0, 0, 0, 0.50);
+      border-radius: 5px;
+
+
+    }
+    .btnbtn{
+      min-width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      position: absolute;
+      bottom: 0;
+      ion-button {
+        width: 80%;
+        margin: 1rem auto;
+      }
+    }
+
   }
 iframe{
     display: block;  /* Make block type */

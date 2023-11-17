@@ -13,7 +13,7 @@ export class AuthenticationService {
   token: string | undefined;
 
   // TODO: ALMACENAR baseUrl EN VARIABLES DE ENTORNO
-  private baseUrl = "http://localhost:3000/"
+  private baseUrl = "https://api.esi.hvdevs.com/"
 
   //# EXCELENTE
   private urlCreateUser = this.baseUrl+"auth/register"
