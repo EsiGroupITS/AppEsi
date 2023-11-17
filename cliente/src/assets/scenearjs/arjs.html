@@ -1,15 +1,15 @@
 <!doctype HTML>
 <html>
   <!--Importaciones para iframe y libreria de AR.js -->
-<script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
-<script src="https://raw.githack.com/jeromeetienne/AR.js/2.2.2/aframe/build/aframe-ar.js"></script>
+  <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+  <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
 <!--Estructura basica de ARJS-->
   <body style='margin : 0px; overflow: hidden;'>
     <!--DebuguiEnable, si esta en true, nos mostrara el estado de un booleano cuando abre la camara, vr-mode-ui si esta en true, podemos utilizar modo VR-->
     <a-scene embedded arjs="debugUIEnabled: false;" vr-mode-ui="enabled: false;">
-      
-      <a-marker preset="hiro">
-          <a-box position='0 0.5 0' material='color: yellow;'></a-box>
+
+      <a-marker preset="hiro" id="aframe-scene" position="" rotation="" scale="" visible="" material="" arjs-anchor="" arjs-hit-testing="">
+        <a-image id="test" src="../../assets/img/aprepfem.jpg" position="0 0 0" rotation="-90 0 0" width="" height="" opacity="1" transparent="true" alpha-test="0.2" shader="standard" scale="1 1 1" visible="" material="" geometry=""></a-image>
       </a-marker>
       <a-entity camera></a-entity>
     </a-scene>
