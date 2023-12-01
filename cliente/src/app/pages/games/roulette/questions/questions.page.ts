@@ -30,8 +30,9 @@ export class QuestionsPage implements OnInit {
       // Obtener el parámetro 'mensaje' de la ruta
       const mensaje = params.get('mensaje');
       if (mensaje) {
+        mensaje.toLowerCase();
         // Verificar el valor del parámetro 'mensaje'
-        if (mensaje === "ENFERMEDADES") {
+        if (mensaje === "enfermedades") {
           // Si 'mensaje' es "ENFERMEDADES", establecer 'mensaje' en 'ets'
           const mensaje = 'ets'
           this.getQuestions(mensaje)
@@ -64,7 +65,7 @@ export class QuestionsPage implements OnInit {
           buttons: [{
             text: 'VOLVER',
             handler: () => {
-              this.router.navigate(['roulette']);
+              this.router.navigate(['home']);
             }
           }]
         })
@@ -83,7 +84,7 @@ export class QuestionsPage implements OnInit {
           buttons: [{
             text: 'VOLVER',
             handler: () => {
-              this.router.navigate(['roulette']);
+              this.router.navigate(['home']);
             }
           }]
         })
